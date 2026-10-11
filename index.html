@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人生底层逻辑 · 一份可以被反驳的原则清单</title>
+
+<!-- SEO / 分享 -->
+<meta name="description" content="35 条人生底层逻辑，每条都写明机制、边界和可执行动作。附配套的精力审计工具。这不是真理清单，是一份有边界的启发式集合。">
+<meta name="author" content="life-logic">
+<meta name="keywords" content="人生底层逻辑,第一性原理,心智模型,价值观,精力管理,课题分离,决策">
+<meta name="theme-color" content="#0f1115">
+<link rel="canonical" href="https://moonlit-firefly.github.io/life-logic/">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="人生底层逻辑">
+<meta property="og:description" content="35 条原则，每条都写明机制、边界和可执行动作。做决策时可参照，但与现实冲突时，相信现实。">
+<meta property="og:url" content="https://moonlit-firefly.github.io/life-logic/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="人生底层逻辑">
+<meta name="twitter:description" content="35 条原则，每条都写明机制、边界和可执行动作。">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f1115'/><text y='72' x='50' font-size='62' text-anchor='middle' fill='%23c9a54e'>◈</text></svg>">
+
+<style>
+:root{
+  --bg:#0f1115; --panel:#161a20; --panel2:#1c212a; --border:#272d38; --border2:#364050;
+  --text:#e9ecf1; --text2:#a8b3c2; --muted:#79838f;
+  --gold:#c9a54e; --gold2:#e0bd63;
+  --warn:#e0a458; --danger:#e06c75; --ok:#5fb98a;
+  --shadow:0 1px 2px rgba(0,0,0,.45),0 10px 30px rgba(0,0,0,.3);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --radius:13px;
+}
+html[data-theme="light"]{
+  --bg:#f7f6f3; --panel:#ffffff; --panel2:#faf9f7; --border:#e6e3dd; --border2:#d5d1c8;
+  --text:#1a1c20; --text2:#4a5058; --muted:#828a93;
+  --gold:#9c7c22; --gold2:#b8933a;
+  --warn:#a86a1f; --danger:#b04a54; --ok:#3f8f68;
+  --shadow:0 1px 2px rgba(30,25,10,.05),0 10px 30px rgba(30,25,10,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",serif;
+  font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;
+}
+button,input{font-family:inherit;font-size:inherit;color:inherit}
+button{cursor:pointer;border:none;background:none}
+::-webkit-scrollbar{width:9px;height:9px}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:9px}
+
+.wrap{max-width:860px;margin:0 auto;padding:40px 24px 100px}
+
+/* 页头 */
+header{margin-bottom:30px}
+.kicker{font-size:11.5px;letter-spacing:2.6px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;font-weight:600}
+h1{font-size:34px;font-weight:700;letter-spacing:-.5px;line-height:1.25;margin-bottom:14px}
+.lede{font-size:15.5px;color:var(--text2);line-height:1.85;max-width:660px}
+.lede b{color:var(--text);font-weight:600}
+.statline{display:flex;gap:22px;flex-wrap:wrap;margin-top:20px;padding-top:18px;border-top:1px solid var(--border)}
+.statline div{font-size:12.5px;color:var(--muted)}
+.statline div b{display:block;font-size:20px;font-weight:700;color:var(--text);font-family:var(--mono)}
+
+/* 工具条 */
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:20;
+  background:linear-gradient(var(--bg) 72%,transparent);padding:12px 0 14px;margin-bottom:8px}
+.searchbox{flex:1;min-width:180px;display:flex;align-items:center;gap:8px;background:var(--panel);
+  border:1px solid var(--border);border-radius:10px;padding:8px 13px;transition:.15s}
+.searchbox:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,165,78,.13)}
+.searchbox span{color:var(--muted);font-size:14px}
+.searchbox input{flex:1;background:none;border:none;outline:none;font-size:13.5px}
+.searchbox input::placeholder{color:var(--muted)}
+.btn{padding:8px 14px;border-radius:9px;font-size:12.5px;font-weight:500;background:var(--panel);
+  border:1px solid var(--border);color:var(--text2);transition:.15s;white-space:nowrap}
+.btn:hover{border-color:var(--border2);color:var(--text)}
+.btn.on{background:var(--gold);border-color:var(--gold);color:#1a1408}
+
+/* 目录 */
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 34px}
+.toc a{font-size:12px;padding:5px 11px;border-radius:7px;background:var(--panel);border:1px solid var(--border);
+  color:var(--text2);text-decoration:none;transition:.15s}
+.toc a:hover{border-color:var(--c,var(--border2));color:var(--text)}
+
+/* 核心 7 条 */
+.core{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);
+  border-radius:var(--radius);padding:20px 22px;margin-bottom:34px;box-shadow:var(--shadow)}
+.core h3{font-size:14px;font-weight:650;margin-bottom:4px;letter-spacing:.2px}
+.core p.hint{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.core ol{margin-left:0;list-style:none;counter-reset:c}
+.core li{counter-increment:c;display:grid;grid-template-columns:24px 1fr;gap:12px;padding:7px 0;
+  border-bottom:1px dashed var(--border);font-size:14px;line-height:1.7}
+.core li:last-child{border-bottom:none}
+.core li::before{content:counter(c);font-family:var(--mono);font-size:12px;font-weight:700;
+  color:var(--gold);padding-top:3px}
+.core li em{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:2px}
+
+/* 章节 */
+section{margin-bottom:44px;scroll-margin-top:76px}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.sec-h h2{font-size:21px;font-weight:700;letter-spacing:-.2px}
+.sec-h .cn{font-size:11.5px;letter-spacing:1.8px;color:var(--muted);text-transform:uppercase}
+.sec-desc{font-size:13.5px;color:var(--muted);line-height:1.8;margin-bottom:20px;
+  padding-bottom:16px;border-bottom:1px solid var(--border);max-width:680px}
+
+/* 条目 */
+.entry{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+  padding:19px 21px;margin-bottom:13px;box-shadow:var(--shadow);position:relative;
+  border-left:3px solid var(--lc,var(--border2));transition:.18s}
+.entry.mine{background:linear-gradient(180deg,var(--panel2),var(--panel))}
+.entry[hidden]{display:none}
+.e-head{display:flex;align-items:flex-start;gap:11px;margin-bottom:5px}
+.e-no{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--lc,var(--gold));
+  padding-top:4px;flex:none;letter-spacing:.5px}
+.e-title{font-size:16.5px;font-weight:650;line-height:1.5;letter-spacing:-.1px}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;letter-spacing:.8px;
+  padding:2.5px 7px;border-radius:5px;background:var(--gold);color:#1a1408;margin-left:8px;
+  vertical-align:middle;position:relative;top:-1px}
+.orig{font-size:14.5px;color:var(--text);line-height:1.8;margin:10px 0 14px;padding:11px 15px;
+  background:var(--bg);border-radius:9px;border-left:2px solid var(--lc,var(--gold));font-weight:500}
+
+.field{display:grid;grid-template-columns:58px 1fr;gap:14px;margin-top:11px}
+.field .k{font-size:10.5px;letter-spacing:1.2px;color:var(--muted);padding-top:4px;font-weight:600;text-transform:uppercase}
+.field .v{font-size:13.5px;line-height:1.85;color:var(--text2)}
+.field .v b{color:var(--text);font-weight:600}
+.field .v em{font-style:normal;color:var(--muted)}
+.field.bound .v{background:var(--panel2);border-radius:8px;padding:10px 13px;border-left:2px solid var(--border2)}
+.field.act .v{background:color-mix(in srgb,var(--lc) 9%,transparent);border-radius:8px;padding:10px 13px}
+html[data-theme="light"] .field.act .v{background:color-mix(in srgb,var(--lc) 11%,transparent)}
+.field .v ul{margin:0;padding-left:17px}
+.field .v li{margin:3px 0}
+
+/* 冲突表 */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
+th{text-align:left;font-size:11px;letter-spacing:1.1px;color:var(--muted);text-transform:uppercase;
+  padding:9px 12px;border-bottom:1.5px solid var(--border2);font-weight:650}
+td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.7}
+td:first-child{color:var(--text);font-weight:500;width:38%}
+td:last-child{color:var(--text2)}
+tr:last-child td{border-bottom:none}
+
+.empty{text-align:center;padding:40px;color:var(--muted);font-size:13.5px;display:none}
+
+/* ===== 阅读进度条 ===== */
+#progress{position:fixed;top:0;left:0;height:2.5px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .08s linear}
+
+/* ===== 顶部声明条 ===== */
+.notice{display:flex;align-items:flex-start;gap:11px;background:var(--panel);
+  border:1px solid var(--border);border-left:3px solid var(--warn);border-radius:11px;
+  padding:13px 16px;margin-bottom:26px;font-size:12.5px;line-height:1.75;color:var(--text2)}
+.notice .ic{flex:none;color:var(--warn);font-size:15px;line-height:1.5}
+.notice b{color:var(--text);font-weight:600}
+.notice a{color:var(--gold);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--gold) 45%,transparent)}
+
+/* ===== 阅读提示 ===== */
+.guide{background:var(--panel);border:1px solid var(--border);border-top:3px solid var(--gold);
+  border-radius:var(--radius);padding:22px 24px;margin-bottom:30px;box-shadow:var(--shadow)}
+.guide h3{font-size:16px;font-weight:680;margin-bottom:3px;display:flex;align-items:center;gap:9px}
+.guide h3 .en{font-size:10.5px;letter-spacing:1.7px;color:var(--gold);text-transform:uppercase;font-weight:600}
+.guide .sub{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+.gsteps{display:grid;gap:1px;background:var(--border);border-radius:9px;overflow:hidden;margin-bottom:16px}
+.gstep{display:grid;grid-template-columns:30px 1fr auto;gap:13px;align-items:baseline;
+  background:var(--panel);padding:11px 15px}
+.gstep .n{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--gold)}
+.gstep .t{font-size:13.5px;line-height:1.7;color:var(--text2)}
+.gstep .t b{color:var(--text);font-weight:600}
+.gstep .m{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
+.gmeta{display:flex;flex-wrap:wrap;gap:10px}
+.gmeta span{font-size:11.5px;color:var(--muted);background:var(--bg);border:1px solid var(--border);
+  padding:4px 10px;border-radius:20px}
+.gmeta span b{color:var(--text2);font-weight:600}
+
+/* 阅读时长小标签 */
+.sec-time{font-size:11px;color:var(--muted);font-family:var(--mono);font-weight:500;
+  background:var(--panel);border:1px solid var(--border);padding:2px 8px;border-radius:20px;margin-left:auto}
+
+/* 工具入口 */
+.toolcard{display:flex;align-items:center;gap:15px;background:var(--panel);border:1px solid var(--border);
+  border-radius:var(--radius);padding:16px 19px;margin:0 0 30px;text-decoration:none;transition:.17s;
+  box-shadow:var(--shadow)}
+.toolcard:hover{border-color:var(--gold);transform:translateY(-1px)}
+.toolcard .ic{width:38px;height:38px;border-radius:10px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(135deg,#6366f1,#06b6d4);color:#fff;font-size:17px}
+.toolcard .tx{flex:1;min-width:0}
+.toolcard .tx h4{font-size:14px;font-weight:650;color:var(--text);margin-bottom:2px}
+.toolcard .tx p{font-size:12px;color:var(--muted);line-height:1.6}
+.toolcard .go{font-size:18px;color:var(--muted);flex:none}
+
+/* ===== 免责声明 ===== */
+.disclaimer{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--warn);
+  border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
+.disclaimer h2{font-size:17px;font-weight:680;margin-bottom:12px;color:var(--warn)}
+.disclaimer h4{font-size:13px;font-weight:650;color:var(--text);margin:16px 0 6px}
+.disclaimer p,.disclaimer li{font-size:13px;line-height:1.85;color:var(--text2)}
+.disclaimer ul{margin:6px 0 0;padding-left:19px}
+.disclaimer li{margin:4px 0}
+.disclaimer b{color:var(--text);font-weight:600}
+.crisis{background:color-mix(in srgb,var(--danger) 12%,transparent);border:1px solid var(--danger);
+  border-radius:9px;padding:13px 16px;margin-top:16px}
+.crisis b{color:var(--danger)}
+.crisis p{color:var(--text2);font-size:13px}
+.reflist{margin-top:16px;padding-top:14px;border-top:1px dashed var(--border)}
+.reflist h4{margin-top:0}
+.reflist ol{margin:0;padding-left:19px}
+.reflist li{font-size:12px;color:var(--muted);line-height:1.8}
+
+/* ===== 页脚 ===== */
+footer{margin-top:50px;padding-top:24px;border-top:1px solid var(--border);font-size:12.5px;
+  color:var(--muted);line-height:1.9}
+footer b{color:var(--text2)}
+.footgrid{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start}
+.footgrid .lic{text-align:right;white-space:nowrap}
+.footgrid .lic a{color:var(--gold);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--gold) 40%,transparent)}
+.ccbadge{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);
+  border:1px solid var(--border);border-radius:20px;padding:4px 11px;margin-bottom:8px}
+.ccbadge b{color:var(--text2);font-weight:600}
+
+/* ===== 回到顶部 ===== */
+#toTop{position:fixed;right:24px;bottom:26px;width:42px;height:42px;border-radius:50%;
+  background:var(--panel);border:1px solid var(--border2);color:var(--text2);font-size:16px;
+  display:grid;place-items:center;box-shadow:var(--shadow);z-index:50;opacity:0;
+  transform:translateY(8px);pointer-events:none;transition:.22s}
+#toTop.show{opacity:1;transform:none;pointer-events:auto}
+#toTop:hover{border-color:var(--gold);color:var(--gold)}
+
+@media(max-width:640px){
+  .wrap{padding:26px 16px 70px}
+  h1{font-size:26px}
+  .field{grid-template-columns:1fr;gap:3px}
+  .field .k{padding-top:6px}
+  td:first-child{width:auto}
+  .gstep{grid-template-columns:24px 1fr;row-gap:3px}
+  .gstep .m{grid-column:2}
+  .footgrid{grid-template-columns:1fr}
+  .footgrid .lic{text-align:left}
+  #toTop{right:15px;bottom:16px}
+  .sec-time{display:none}
+}
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff!important;color:#000;font-size:11pt}
+  .toolbar,.toc,.empty,#toTop,#progress{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .entry,.core,.card{box-shadow:none;break-inside:avoid;page-break-inside:avoid;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .guide,.disclaimer,.notice{box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .toolcard{display:none!important}
+  section{break-inside:auto}
+  .entry{border-left-width:3px}
+  footer{page-break-before:avoid}
+  a{color:inherit!important;text-decoration:none}
+}
+</style>
+</head>
+<body data-build="2026-10-11">
+<div id="progress"></div>
+<div class="wrap">
+
+<header>
+  <div class="kicker">FUNDAMENTAL LOGIC OF LIFE</div>
+  <h1>人生底层逻辑</h1>
+  <p class="lede">
+    这是一份<strong>可以互相打架的原则清单</strong>——因为真正的底层逻辑不是格言集，是<b>冲突时的排序依据</b>。<br>
+    35 条原则，每条都写明四件事：<b>原式</b>（一句话）、<b>机制</b>（为什么成立）、<b>边界</b>（什么时候会失效）、<b>动作</b>（具体做什么）。
+    其中 4 条是作者本人已经明确表达的观点，其余 27 条是按六个层次补上的。
+    <b>每条都写了「边界」</b>——因为没有边界的原则一旦被滥用，伤害比没有原则更大。
+  </p>
+  <div class="statline">
+    <div><b>35</b>条原则</div>
+    <div><b>4</b>条作者原话</div>
+    <div><b>6</b>个层次</div>
+    <div><b>7</b>条核心速查</div>
+    <div><b>9</b>组冲突裁决</div>
+  </div>
+</header>
+
+<!-- 顶部声明 -->
+<div class="notice">
+  <span class="ic">⚠</span>
+  <div>
+    <b>先说清楚：这是一份个人思考记录，不是真理，也不构成任何专业建议。</b>
+    它没有经过同行评议，引用的心理学与行为科学概念做了通俗化处理，可能存在简化失真。
+    <b>不构成心理咨询、医疗、法律、财务或投资建议。</b>
+    如果你正处于心理危机，请寻求专业帮助——不要靠一份清单自救。
+    <a href="#disclaimer">完整免责声明 ↓</a>
+  </div>
+</div>
+
+<!-- 阅读提示 -->
+<div class="guide">
+  <h3><span class="en">How to read</span>阅读提示</h3>
+  <div class="sub">这份材料有它自己的读法。花 30 秒看完这四条，你的收获会明显不同。</div>
+  <div class="gsteps">
+    <div class="gstep">
+      <span class="n">01</span>
+      <span class="t">先读 <b>Part I「作者已说出的四条」</b>。那是这份文档的原点，其余 27 条都是由它们延伸出来的。理解了原点，后面的条目才有归属。</span>
+      <span class="m">约 5 分钟</span>
+    </div>
+    <div class="gstep">
+      <span class="n">02</span>
+      <span class="t">再看 <b>「如果只记 7 条」</b>。35 条会稀释熟练度，压力时刻你能想起来的只有最熟的三五条。<b>先给这 7 条排序——那个顺序就是你的价值观。</b></span>
+      <span class="m">约 3 分钟</span>
+    </div>
+    <div class="gstep">
+      <span class="n">03</span>
+      <span class="t">然后<b>按层挑</b>，不必通读。六个层次是独立的，哪一层最近让你困扰，就从哪一层开始。每层约 5 分钟。</span>
+      <span class="m">按需</span>
+    </div>
+    <div class="gstep">
+      <span class="n">04</span>
+      <span class="t">最后看 <b>「冲突仲裁表」</b>。这是全篇最实用的一页——底层逻辑的价值不在单条格言，而在两条打架时你按哪条。</span>
+      <span class="m">约 3 分钟</span>
+    </div>
+  </div>
+  <div class="gmeta">
+    <span>快速版（Part I + 核心 7 条）约 <b>8 分钟</b></span>
+    <span>通读约 <b>30 分钟</b></span>
+    <span>建议读法：<b>挑 3 条写成触发条件</b>，不要试图同时改 35 条</span>
+    <span>一个请求：<b>读的时候准备反驳</b></span>
+    <span>可搜索 / 可只看作者原话 / 可打印</span>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="searchbox"><span>⌕</span><input id="q" type="search" placeholder="搜索原则，例如「沉没成本」「边界」「反刍」……"></div>
+  <button class="btn" id="onlyMine">只看作者原话</button>
+  <button class="btn" id="themeBtn">◐ 主题</button>
+  <button class="btn" id="printBtn">🖨 打印 / PDF</button>
+</div>
+
+<nav class="toc">
+  <a href="#s1" style="--c:#c9a54e">一 · 作者已说出的四条</a>
+  <a href="#sA" style="--c:#f59e0b">资源层 · 能量与注意力</a>
+  <a href="#sB" style="--c:#ec4899">边界层 · 你与他人</a>
+  <a href="#sC" style="--c:#8b5cf6">本体层 · 情绪与自我</a>
+  <a href="#sD" style="--c:#06b6d4">认知层 · 判断与决策</a>
+  <a href="#sE" style="--c:#22c55e">行动层 · 时间与执行</a>
+  <a href="#sF" style="--c:#6366f1">意义层 · 存在与方向</a>
+  <a href="#sG" style="--c:#94a3b8">元层 · 关于这套逻辑本身</a>
+  <a href="#sH" style="--c:#c9a54e">冲突仲裁表</a>
+</nav>
+
+<!-- 配套工具 -->
+<a class="toolcard" href="tools/energy-audit.html">
+  <span class="ic">⚡</span>
+  <span class="tx">
+    <h4>配套工具 · 精力审计与能量管理系统</h4>
+    <p>A1–A4 那四条讲的是"精力该怎么分配"。光讲没用——这个工具让你记录 14 天，算出你自己的峰值时段、最大泄漏点和环境摩擦成本。纯本地运行，数据不上传。</p>
+  </span>
+  <span class="go">→</span>
+</a>
+
+<!-- 核心 7 -->
+<div class="core">
+  <h3>如果只记 7 条</h3>
+  <p class="hint">底层逻辑的落地形式不是"记住"，是"装一个触发条件"。下面 7 条是我认为杠杆最大的——先给它们排序，你的价值观就成形了。</p>
+  <ol>
+    <li>精力要分配，不是靠意志<em>能量守恒视角 · 增源 / 节流 / 按节律调度</em></li>
+    <li>你在思考谁的问题，就是在参与谁的因果<em>停止替别人背负因果</em></li>
+    <li>你在寻求谁的认同，就是在向谁赋权<em>把裁判权收回来</em></li>
+    <li>情绪可堪破<em>它是对解释的反应，不是对事实的反应</em></li>
+    <li>行动先于动机<em>等待动力是效率最高的拖延</em></li>
+    <li>系统 &gt; 目标<em>目标定方向，系统出结果</em></li>
+    <li>控制二分法<em>只在「我能控制的」那一栏花时间</em></li>
+  </ol>
+</div>
+
+<!-- ============ 一 ============ -->
+<section id="s1">
+  <div class="sec-h"><span class="cn">Part I</span><h2>作者已说出的四条</h2><span class="sec-time">5 min</span></div>
+  <p class="sec-desc">这四条是作者本人已经明确表达过的观点。下面把它们拆到可以执行的粒度，并标出各自的失效边界。</p>
+
+  <!-- 1 -->
+  <div class="entry mine" style="--lc:#c9a54e" data-mine="1">
+    <div class="e-head">
+      <span class="e-no">01</span>
+      <div class="e-title">精力是有限资源，需要被分配<span class="badge">作者原话</span></div>
+    </div>
+    <div class="orig">精力有限，会被生活方式、接触到的信息、自身行为所损耗；管理它有两条路——增源（深睡、锻炼等）与节流（把精力分配到需要的地方，保持秩序，减少无意识损耗）。</div>
+
+    <div class="field"><div class="k">机制</div><div class="v">
+      精力不是一块电池，而是<b>几个不同账户 × 一条波动曲线</b>。账户是体能 / 情绪 / 心智 / 意义，一个耗尽时其余三个可以顶班；曲线是约 90 分钟的超日节律加上昼夜波动，同样 8 小时放在峰值还是谷底，产出差 2–3 倍。<br>
+      关键补充：损耗其实分三类，性质完全不同——
+      <ul>
+        <li><b>占时间格的</b>：伪恢复（刷手机），你能指认它花掉了哪几个小时</li>
+        <li><b>不占时间格但占带宽的</b>：反刍、内耗，它不偷你的时间，它偷你的余量</li>
+        <li><b>两者都不占、给所有小时打折的</b>：环境摩擦（混乱的房间、杂乱桌面、爆掉的标签页）</li>
+      </ul>
+      第三类最难察觉，也最难靠意志力解决——因为它不是"你做了什么"，是"你处在什么条件里"。
+    </div></div>
+
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      精力<b>不是纯消耗品</b>。心流状态下高消耗反而带来补充；意义感可以"借"来精力。把精力管理变成"省着用"，会滑向保守和回避。<br>
+      "节律"是统计规律，个体差异极大（晨型 / 夜型 / 病理因素），所有通用建议都必须 n=1 校准。<br>
+      最需要警惕的：<b>把它变成新的焦虑源。</b>"今天精力又没管好"本身就是一笔新增内耗——这是这套理论最容易自噬的地方。
+    </div></div>
+
+    <div class="field act"><div class="k">动作</div><div class="v">
+      <ul>
+        <li>记录 14 天，找出你的<b>峰值窗口</b>和排名前三的"抽血事件"</li>
+        <li>峰值时段只放一件深度工作；低谷排行政、沟通、机械活</li>
+        <li>每晚 10 分钟把未决事项全部写下来外置——<b>写下来 = 关掉后台进程</b></li>
+        <li>追问顺序：先问"睡眠规律吗"，再问"环境摩擦大吗"，最后才问"意志力够不够"</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- 2 -->
+  <div class="entry mine" style="--lc:#ec4899" data-mine="1">
+    <div class="e-head">
+      <span class="e-no">02</span>
+      <div class="e-title">你在思考谁的问题，就是在参与谁的因果<span class="badge">作者原话</span></div>
+    </div>
+    <div class="orig">你在思考谁的问题，就是在参与谁的因果。</div>
+
+    <div class="field"><div class="k">机制</div><div class="v">
+      注意力不是旁观，<b>它是因果链上的真实投入</b>。你想一件事，就是在为它供能。这解释了两件事：<br>
+      ① 你为什么累——你承担了不记在你名下的因果；<br>
+      ② 你为什么改不动别人——你只有<b>参与权</b>，没有<b>决定权</b>。反复思考对方该怎么做，既不改变对方，又消耗了你自己的因果。<br>
+      它也借力于课题分离：分清"这是谁的课题"，判据不是"谁对谁错"，而是<b>最终结果由谁承担</b>。
+    </div></div>
+
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      <b>这不是"别管别人"。</b>有些关系里，思考对方的处境是责任的一部分（养育、伴侣、团队协作）。把它用成冷漠的许可证，是这套逻辑最危险的误用。<br>
+      真正的判据不是"我在想谁的问题"，而是——<b>想完之后，行动的主语是谁？</b><br>
+      指向"我该做什么" → 健康；指向"他该做什么" → 你已经在替对方背负因果了。<br>
+      还有一层：<b>共情 ≠ 承担。</b>能感受对方的处境，不等于要把他的结果背在自己身上。感受可以很深，行动必须分清归属。
+    </div></div>
+
+    <div class="field act"><div class="k">动作</div><div class="v">
+      当你发现自己又在反复想某件事，只问一句：<br>
+      <b>"这件事的下一步动作，主语是谁？"</b><br>
+      主语是别人 → 把注意力收回到"我能改变的那部分条件"上。改变条件通常有解，改变人通常无解。
+    </div></div>
+  </div>
+
+  <!-- 3 -->
+  <div class="entry mine" style="--lc:#ec4899" data-mine="1">
+    <div class="e-head">
+      <span class="e-no">03</span>
+      <div class="e-title">你在寻求谁的认同，就是在向谁赋权<span class="badge">作者原话</span></div>
+    </div>
+    <div class="orig">你在寻求谁的认同，就是在向谁赋权。</div>
+
+    <div class="field"><div class="k">机制</div><div class="v">
+      认同是一种<b>授权</b>。你把"我做得对不对"的裁判权交给谁，谁就对你的情绪有了支配权。<br>
+      这不是道德问题，是<b>结构问题</b>：裁判权一旦外置，你的状态就不再由你决定。<br>
+      很重要的一点：多数痛苦不来自批评本身，而来自<b>我们把裁判权交给了会批评我们的人</b>。同一个批评，来自你看重的人会让你崩，来自路人你三秒就忘——差别不在批评，在授权。
+    </div></div>
+
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      <b>别把它用成"拒绝一切反馈"。</b>要分清两种东西：<br>
+      · <b>信息性反馈</b>：关于事实和效果的（"这个方案在转化率上没达到预期"）→ 有用，该收；<br>
+      · <b>身份性认可</b>：关于你这个人够不够好的（"你不行"）→ 这才是赋权。<br>
+      判据极简：<b>这条反馈能不能被翻译成"下一步做什么"？</b>能翻译 = 信息，收下并转成动作；不能翻译 = 身份评价，退回。<br>
+      另外，<b>完全不需要任何人的认同，通常不是自由，是另一种防御。</b>健康的形态是"我需要连接，但不需要许可"。
+    </div></div>
+
+    <div class="field act"><div class="k">动作</div><div class="v">
+      每次因别人的评价而波动时，先做分类：<br>
+      · 信息 → 提取动作，丢掉情绪外壳<br>
+      · 身份 → 在心里明确退还："这是你的判断，不是关于我的事实"<br>
+      再往上一层：主动列一份<b>"我把裁判权交给了谁"</b>的名单，看看这个名单是不是你自愿选的。
+    </div></div>
+  </div>
+
+  <!-- 4 -->
+  <div class="entry mine" style="--lc:#8b5cf6" data-mine="1">
+    <div class="e-head">
+      <span class="e-no">04</span>
+      <div class="e-title">情绪可堪破<span class="badge">作者原话</span></div>
+    </div>
+    <div class="orig">情绪可堪破思维方式。</div>
+
+    <div class="field"><div class="k">机制</div><div class="v">
+      情绪不是对<b>事实</b>的反应，是对<b>解释</b>的反应。同一个事件，换一个解释，情绪就变了——说明情绪里坐着的不是事件，是一条信念。<br>
+      所以情绪是<b>可堪破的</b>：它里面藏着一条没说出口的命题，把它拎出来，你就能从一个"被情绪当对象"的人，变成一个"看着情绪"的人。<br>
+      常见的隐藏命题：<br>
+      · 愤怒 → "这不应该"　· 焦虑 → "我必须控制"<br>
+      · 羞耻 → "我这个人不行"　· 委屈 → "我付出了却没被看见"<br>
+      情绪一旦被命名、被看清，强度就会下降——这不是心理暗示，是<b>前额叶重新上线</b>的过程。
+    </div></div>
+
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      <b>看破 ≠ 压制，也不等于消灭。</b>有些情绪是准确信号：恐惧真在提示风险，愤怒真在标记边界，悲伤真在提示失去。<br>
+      判据：<b>这条情绪在告诉我什么信息？它在保护什么？</b>有信息 → 读它；只有重复、没有新信息 → 那是反刍，可以破。<br>
+      另一个必须避开的坑：对自己说"我不该有这个情绪"，是第三次伤害——第一次是事件，第二次是情绪，第三次是自责。前两次难免，第三次是自加的。
+    </div></div>
+
+    <div class="field act"><div class="k">动作</div><div class="v">
+      情绪上来时，走三步：<br>
+      ① <b>命名</b>——"这是羞耻，不是事实"<br>
+      ② <b>找命题</b>——"它预设了什么？"<br>
+      ③ <b>验真</b>——"这条命题成立吗？有没有反例？"<br>
+      最后加一道闸门：<b>"这个情绪想让我做的事，如果做了，我会更自由还是更被绑住？"</b>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ 资源层 ============ -->
+<section id="sA">
+  <div class="sec-h"><span class="cn">Layer A</span><h2>资源层 · 能量与注意力</h2><span class="sec-time">3 min</span></div>
+  <p class="sec-desc">这是你那条"精力有限论"所在的层。你说了能量，这一层还有三件事你没说到：注意力的相对稀缺、环境的认知地位、以及恢复的真实机制。</p>
+
+  <div class="entry" style="--lc:#f59e0b">
+    <div class="e-head"><span class="e-no">A1</span><div class="e-title">注意力比时间更稀缺</div></div>
+    <div class="orig">时间不可控，注意力可控——所以真正可管理的资源是注意力，不是时间。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      时间对所有人公平、匀速、不可增减；注意力可被分配，也可被劫持。你能决定的从来不是"有多少时间"，而是<b>"把注意力放在哪"</b>。<br>
+      推论：管理注意力 ≠ 管理日程。日程排满但注意力是碎的，等于没做。信息时代真正的阶层差异，是<b>注意力自主权</b>的差异。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      注意力不是可以无限训练到"专注 8 小时"的。前额叶容量有生理上限，而且睡眠、血糖、情绪都会直接改变它。<br>
+      方向应该是<b>"专注得更有结构"</b>，而不是"专注得更久"。前者可做，后者常常是自我惩罚。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把问题从"今天要做什么"换成<b>"今天哪些时段完全属于哪一件事"</b>。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#f59e0b">
+    <div class="e-head"><span class="e-no">A2</span><div class="e-title">环境是认知的一部分，不是背景</div></div>
+    <div class="orig">你把一部分记忆和决策外包给了环境——所以环境乱，是认知器官在乱。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      视野里的每样不在其位的东西，都是一条<b>没关掉的后台进程</b>。目光扫过一次，大脑就跑一次"这个该处理"的评估——而且这个过程是<b>前注意的</b>，在你意识到之前就已经付费了。<br>
+      这就是"无意识消耗"的精确机制：<b>消耗不来自你决定去处理它，而来自你根本没决定，它就已经被处理了。</b><br>
+      所以环境摩擦不是第十个活动类型，它是给每一个小时加的<b>恒定折扣系数</b>。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      ① 消耗只发生在<b>视野覆盖范围</b>内。你背后的墙角，消耗远小于正前方那 2 平方米——所以别去收拾整个房间。<br>
+      ② 追求<b>完美秩序</b>会变成新增的焦虑源。目标是"摩擦低于感知阈值"，不是一尘不染。<br>
+      ③ 对部分人（尤其是视觉型之外的认知风格），环境的边际影响确实较小。要相信自己的数据，不要相信通用结论。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      · 只维护"视野区"，不维护整个房间<br>
+      · 建立<b>"家"而不是"整理"</b>：判据是"闭着眼睛能不能拿到"。没有家的东西——要么给它一个家，要么扔掉<br>
+      · 减少总量 &gt; 提高收拾频率（一进一出）<br>
+      · 最便宜的先做：<b>数字环境</b>（桌面、下载夹、标签页、通知），成本近零
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#f59e0b">
+    <div class="e-head"><span class="e-no">A3</span><div class="e-title">未闭合的循环会持续抽血</div></div>
+    <div class="orig">每一个没结束的事，都会在后台留一个进程——不管你有没有在想它。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      蔡格尼克效应 + 注意力残留：未完成的事对注意力的抓取强度高于已完成的事。这是一个<b>后台常驻开销</b>，不占你的时间表，只占你的余量。<br>
+      这解释了为什么"没做什么却特别累"——你为那些悬而未决的事付了看不见的租金。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      不是所有事都必须"完成"。有些事的正确终局是<b>明确地放弃</b>。"我决定不做它"是一条闭合的循环；"我一直没做它"是一条张开的。<br>
+      <b>放弃比拖延便宜得多</b>——这一条几乎没人用，但它收益极高。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      建一个外置系统（一张纸或一个清单），把未决事项从脑子里<b>搬出去</b>。写下来这个动作本身就是关闭进程。<br>
+      每周花 15 分钟做一次"循环清查"：留下、立刻做、还是明确放弃——<b>三个都必须选一个，不许留在原地。</b>
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#f59e0b">
+    <div class="e-head"><span class="e-no">A4</span><div class="e-title">恢复不是休息，是切换</div></div>
+    <div class="orig">让定向注意力疲劳的东西，恰恰是刷手机——它不恢复，它继续消耗。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      疲劳的对手不是"工作"，是<b>"同类型的消耗"</b>。定向注意力疲劳后，继续使用定向注意力（刷信息流、看短视频）并不能恢复它。<br>
+      真正有效的恢复只有三条路径：<br>
+      · <b>生理</b>：睡眠、运动、自然光下走动<br>
+      · <b>模式切换</b>：脑力↔体力、独处↔社交、输入↔输出<br>
+      · <b>意义</b>：做一件无功利的事（不是为了效率才做的）
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      有人确实靠"放空刷手机"恢复<b>社交电量</b>——这并不必然是错的。<br>
+      关键区别是<b>主动选择还是被动滑落</b>：我决定看 20 分钟 → 恢复；我回过神来已经过去两小时 → 消耗。<br>
+      界限在意图，不在行为。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      给每类疲劳配对恢复方式：脑力累 → 用身体；社交累 → 独处；意义空虚 → 做一件无产出的事。<br>
+      <b>别用同一类活动去恢复同一类消耗。</b>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ 边界层 ============ -->
+<section id="sB">
+  <div class="sec-h"><span class="cn">Layer B</span><h2>边界层 · 你与他人</h2><span class="sec-time">4 min</span></div>
+  <p class="sec-desc">你的"因果"和"赋权"都在这一层。它们有一个共同的底层机制：<b>你与他人的责任如何划界</b>。这一层最容易走偏——用不好就从清醒变成冷漠。</p>
+
+  <div class="entry" style="--lc:#ec4899">
+    <div class="e-head"><span class="e-no">B1</span><div class="e-title">期待的落点决定主动权</div></div>
+    <div class="orig">你期待别人改变，就等于把结果交给了别人。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      期待本质是一份<b>隐性契约</b>："我付出 A，你应该还我 B"——而对方从未签字。<br>
+      所以期待落空时那种"被辜负感"，来自一份单方面拟定的合同。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      期待不是错，错的是把期待当<b>应然</b>。<br>
+      你可以说出期待，但不能要求对方按你的剧本活。有期待而不说，叫委屈；有期待而强求，叫控制。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把"他应该……"改写成一句完整的、带后手的话：<br>
+      <b>"我需要……，如果达不到，我会……。"</b><br>
+      后半句才是你的主动权，也是唯一你能完全决定的部分。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#ec4899">
+    <div class="e-head"><span class="e-no">B2</span><div class="e-title">愤怒通常是边界的信号</div></div>
+    <div class="orig">愤怒的底层命题是"这不应该"——它往往标记了一条你没说出口的边界被越过了。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      愤怒不是随机的情绪噪声，它是一个<b>报警器</b>：某条你认为理所当然的界线被踩了。<br>
+      问题在于，多数人从没把那条约线说出口过——于是报警器响个不停，而没人知道该修什么。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      <b>愤怒是信号，不是授权。</b>信号的价值在于<b>读出那条边界</b>，不在于当场把它发射出去。<br>
+      还有：不是每条愤怒都对应合理边界。有些"应该"是你从别处继承来的，未必是你真的认的。要敢于质疑报警器本身。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      生气时先问：<b>"我哪条边界被越过了？"</b><br>
+      然后<b>事后</b>把它说出来——用陈述句（"当 X 发生时，我感到……"），不用指控句（"你怎么能……"）。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#ec4899">
+    <div class="e-head"><span class="e-no">B3</span><div class="e-title">想帮人之前，先看自己站在哪个角</div></div>
+    <div class="orig">当你试图"拯救"一个人，你就把他固定成了受害者；当他反抗，你会觉得自己在受迫害。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      这是卡普曼三角（拯救者—迫害者—受害者）的自动轮转：<b>三个角会互相转换，没人能一直待在同一个位置。</b><br>
+      你越用力拯救，越把对方按在"无力"的位置上；对方要挣脱，就会把你推去"迫害者"的角。很多关系里的反复撕扯就发生在这个循环里。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      真正的帮助是<b>增加对方的能力</b>，不是<b>替对方承担结果</b>。<br>
+      判据：帮完之后，他更强了还是更依赖了？<br>
+      前者是帮助，后者是你用"被需要"换取了自我价值感——这笔交易里，你其实也拿到了东西。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      想帮忙前问一句：<b>"我这是在增加他的能力，还是在买断他的责任？"</b><br>
+      如果是后者——停。然后问："他真正需要的是一次代劳，还是一次学会？"
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#ec4899">
+    <div class="e-head"><span class="e-no">B4</span><div class="e-title">你改变不了人，只能改变条件</div></div>
+    <div class="orig">行为 = 人 × 环境。你动不了第一项，但第二项往往完全在你手里。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      "改变他"通常是无解题，因为变量不在你手里；<b>"改变我和他相处的条件"通常有解</b>，因为变量在你手里。<br>
+      同样的困境，换个目标就从无解变成有解了。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      这不是"放弃沟通"。条件可以包括清晰的表达、明确的后果、以及你愿意投入的程度的调整。<br>
+      但要接受一个结果：<b>对方可能选择不接受新条件。</b>那时你要做的不是加码，是决定自己在新的条件下要不要继续。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把"怎么让他变"改问成 <b>"我能在什么条件下，不必依赖他改变？"</b>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ 本体层 ============ -->
+<section id="sC">
+  <div class="sec-h"><span class="cn">Layer C</span><h2>本体层 · 情绪与自我</h2><span class="sec-time">4 min</span></div>
+  <p class="sec-desc">你的"情绪可堪破"在这一层。它是内部操作最核心的一层——这里如果乱着，外层的边界和行动都会失真。</p>
+
+  <div class="entry" style="--lc:#8b5cf6">
+    <div class="e-head"><span class="e-no">C1</span><div class="e-title">第二支箭</div></div>
+    <div class="orig">痛苦 = 疼痛 × 抵抗。第一支箭是事件射的，第二支是自己射的。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      第一支箭（损失、失败、被拒绝）带来的疼痛不可避免。<br>
+      第二支箭是你对疼痛的<b>抵抗、评判、反刍</b>——"为什么是我""我不该这样""一切都完了"。第二支箭射得比第一支狠，而且完全可以避免。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      这不是要你"别疼"，也不是要你"想开点"。<b>疼是事实，为疼而疼才是选择。</b><br>
+      要小心的是一种伪装：把"我接纳了"当成压抑的工具。真正的接纳是允许疼痛存在，不是宣布它不存在。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      难受时问：<b>"这是第一支箭，还是我正在给自己射第二支？"</b>
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#8b5cf6">
+    <div class="e-head"><span class="e-no">C2</span><div class="e-title">反刍不是思考</div></div>
+    <div class="orig">思考指向"接下来做什么"，反刍指向"为什么会这样"。一个收殓，一个循环。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      反刍的体感非常像思考——这也是它危险的地方。它让你觉得"我在处理这件事"，实际上你只是在反复体验它。<br>
+      判据：<b>做完之后，你手里多了一个动作，还是多了一层情绪？</b><br>
+      多一个动作 → 思考。多一层情绪 → 反刍。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      有些"为什么"确实需要想清楚才能行动。区分靠<b>时间盒</b>：给它 20 分钟，时间到了就必须转成"我先做 A"。<br>
+      如果 20 分钟里没有产生新信息，那就不是思考，是循环。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      发现自己在反刍 → <b>强制落成一个动作</b>，哪怕是个不完美的动作。<br>
+      行动不仅解决问题，它还是唯一能真正打断循环的东西。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#8b5cf6">
+    <div class="e-head"><span class="e-no">C3</span><div class="e-title">你不是你的念头</div></div>
+    <div class="orig">能观察念头的东西，不等于念头。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      把"我"和"我的念头"拉开一段距离，是所有情绪技术的底层操作。<br>
+      它解开的是这条自动链条：<b>念头 = 事实 = 我必须反应。</b>断开最后一环——有念头，不等于必须行动。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      这不是要你否认念头、更不是要你"消灭自我"。<br>
+      也不是要你变得冷眼旁观——<b>距离是为了不被绑住，不是为了不参与。</b>
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把"我很失败"改写成<b>"我有一个'我很失败'的念头"</b>。<br>
+      就一句话的距离，但它把主语从"我"换成了"念头"。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#8b5cf6">
+    <div class="e-head"><span class="e-no">C4</span><div class="e-title">自我价值不能外包给结果</div></div>
+    <div class="orig">结果 = 能力 × 运气，而运气不在你手里。把自我价值绑在结果上，等于把它交给随机数。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      结果里永远混着运气的成分。如果"我值不值得"由结果决定，那么每次结果波动，你的自我评价就跟着波动——你会活成一个被随机数牵着走的人。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      不是"结果不重要"。是说：<b>结果用来校准方法，不用来定价人。</b><br>
+      而且"不外包"不等于"我很棒"式的自我表扬——那只是把裁判换成了自己。更稳的形态是：<b>把评价的语法从"我是什么人"改成"发生了什么、下次怎么做"。</b>
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      复盘时只允许问：<b>"下次改什么？"</b><br>
+      不许问："我是不是不行？"——后者不产生任何可用信息，只产生情绪。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#8b5cf6">
+    <div class="e-head"><span class="e-no">C5</span><div class="e-title">内在对话的语言，塑造体验</div></div>
+    <div class="orig">你怎么对自己说话，决定了你在压力下还剩多少资源。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      自我攻击的体感像是"对自己负责"，实际上它把资源从解决问题挪到了自我惩罚。<br>
+      <b>自我关怀 ≠ 放纵。</b>前者是"这件事很难，我接下来怎么做"，后者是"算了无所谓"。两者完全不同。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      别把"对自己温柔"变成降低标准。检验办法：<b>自我关怀的语言，是否同时指向更高的行动质量？</b>指向 → 是真的；只指向"舒服一点" → 是放纵。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把自我批评的句式换一种说法：<b>"如果是我最信任的人处在这个处境，我会跟他说什么？"</b>然后说给自己听。
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ 认知层 ============ -->
+<section id="sD">
+  <div class="sec-h"><span class="cn">Layer D</span><h2>认知层 · 判断与决策</h2><span class="sec-time">4 min</span></div>
+  <p class="sec-desc">前三层管"你是什么状态"，这一层管"你判断得对不对"。它的作用不是让你更聪明，是让你<b>少犯系统性错误</b>。</p>
+
+  <div class="entry" style="--lc:#06b6d4">
+    <div class="e-head"><span class="e-no">D1</span><div class="e-title">沉没成本不是成本，机会成本才是</div></div>
+    <div class="orig">已经投入的时间和钱不可回收，理性上与下一步无关——但心理上它会绑架你。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      "都投这么多了"，是一句与未来无关的话。它唯一的作用是让你为了维护过去的一致性，而继续损害未来。<br>
+      真正该问的不是"我投入了多少"，而是<b>"如果现在从零开始，我还会选它吗？"</b>
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      不是所有坚持都是沉没成本谬误。如果坚持本身在累积真实优势（技能、信任、复利），那是有价值的。<br>
+      区分点：<b>你坚持的是"投入已经发生"这个事实，还是"未来会更好"这个真实预期？</b>
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      卡在决定里时，问：<b>"从现在起只看未来，我选哪个？"</b>
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#06b6d4">
+    <div class="e-head"><span class="e-no">D2</span><div class="e-title">你看到的样本是被筛选过的</div></div>
+    <div class="orig">你看到的是活下来、成功、发声的那部分——沉默的那部分不在你的视野里。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      这是幸存者偏差。它让你从"可见样本"里归纳规律，而可见样本本身是被结果筛选过的。<br>
+      结论：<b>成功的经验往往是不可靠的教材</b>，因为失败者没机会开口。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      这不等于"成功者的方法都没用"。不等于"努力没用"。<br>
+      只是提醒：把注意力从"他们怎么成功的"移向 <b>"和它同时出发但失败的那些，发生了什么？"</b>
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      听到一个成功故事时，先补一句：<b>"同期做同样事但失败的人，去哪了？"</b>
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#06b6d4">
+    <div class="e-head"><span class="e-no">D3</span><div class="e-title">好决策可以有坏结果</div></div>
+    <div class="orig">结果质量 ≠ 决策质量。结果 = 决策 × 运气。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      只看结果评价决策，会学到<b>错误的教训</b>：赢了归因于英明，输了归因于倒霉。<br>
+      这会让你在两个方向都学偏——把侥幸当成方法，把正确的判断当成错误。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      也别走向另一极端："反正结果随机，那怎么选都行。"<br>
+      决策质量的差距是<b>真实存在且可积累的</b>。要做的只是把这两件事分开评价，而不是否认其中一件。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      复盘时分成两栏：<b>① 决策过程对不对？② 运气占多少？</b><br>
+      只修改第一栏。第二栏学不到东西。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#06b6d4">
+    <div class="e-head"><span class="e-no">D4</span><div class="e-title">先分清可逆与不可逆</div></div>
+    <div class="orig">可逆的决定要快做，不可逆的决定要慢做——多数人的错误恰好相反。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      可逆决策（Door 2）试错成本低，快速做、快速改，胜过反复权衡；<br>
+      不可逆决策（Door 1）回不去，值得慢、值得多花时间、值得睡一觉再定。<br>
+      常见错配：<b>小事上纠结半天，大事上凭一时冲动。</b>
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      很多决定看似不可逆，实际有软性的回退路径。判断"可逆性"时，要问的是<b>"最坏情况下我能不能恢复"</b>，而不是"理论上能不能撤销"。<br>
+      相反，有些事看着可逆，但会不可逆地改变别人对你的信任——这类要当不可逆处理。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      决定前先问：<b>"做错了，能退回来吗？"</b><br>
+      能 → 立刻做，别磨；不能 → 至少停一晚。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#06b6d4">
+    <div class="e-head"><span class="e-no">D5</span><div class="e-title">结论的质量上限，是你的问题质量</div></div>
+    <div class="orig">你怎么问，决定了你能看到什么。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      "我为什么这么惨"和"我在什么条件下状态最好"是两个完全不同的问题，会导出完全不同质量的答案。<br>
+      前者只生产解释和情绪，后者生产条件和动作。<br>
+      <b>绝大多数卡住，不是想不出答案，是问错了问题。</b>
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      不是所有"为什么"都该改掉。想清楚根因有时是必要的（尤其涉及模式重复时）。<br>
+      但要注意配比：<b>"为什么"用于理解模式，"什么条件/什么动作"用于改变现状。</b>一直停在"为什么"，就是反刍。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把"为什么"式的提问，尽量改写成<b>"在什么条件下"或"下一步做什么"</b>。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#06b6d4">
+    <div class="e-head"><span class="e-no">D6</span><div class="e-title">为观点找证据是本能，找反例才是能力</div></div>
+    <div class="orig">大脑的默认模式是辩护律师，不是科学家。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      确认偏误：你会自动搜索支持已有观点的信息，忽略或贬低相反的。它不需要动机，是默认设置。<br>
+      所以"我很客观"这个感觉本身，往往就是确认偏误的产物。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      不必对每个小判断都做科学审查（成本太高）。<br>
+      但有一个分界线很实用：<b>可逆的、低成本的判断凭直觉；不可逆的、高成本的判断必须主动找反例。</b>
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      做重要判断时，专门写一栏：<b>"如果我是错的，会看到什么现象？"</b>然后去找那个现象。
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ 行动层 ============ -->
+<section id="sE">
+  <div class="sec-h"><span class="cn">Layer E</span><h2>行动层 · 时间与执行</h2><span class="sec-time">4 min</span></div>
+  <p class="sec-desc">前面所有层都要通过这一层才产生结果。<b>这里断掉，前面全是自我安慰。</b></p>
+
+  <div class="entry" style="--lc:#22c55e">
+    <div class="e-head"><span class="e-no">E1</span><div class="e-title">行动先于动机</div></div>
+    <div class="orig">我们以为"有动力才行动"——实际上很多时候是"行动产生动力"。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      等待动机是<b>效率最高的拖延方式</b>：它让你觉得在等一个正当条件，实际上是在回避。<br>
+      行为激活的原理是：启动动作本身会改变状态，动机是结果不是前提。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      不是说"任何情况下都硬上"。长期耗竭、抑郁状态下的"行动不起来"是生理性的，不是懒——那时需要的是恢复和帮助，不是自我强迫。<br>
+      区分：<b>轻微的抗拒 → 行动；深度的枯竭 → 恢复。</b>
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把启动门槛降到<b>"2 分钟能做完的第一小步"</b>，先做。动机随后到。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#22c55e">
+    <div class="e-head"><span class="e-no">E2</span><div class="e-title">系统 &gt; 目标</div></div>
+    <div class="orig">目标决定方向，系统决定结果。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      目标是"减 10 斤"，系统是"每天怎么吃"。只盯目标的人靠意志力（有限），有系统的人靠结构（可持续）。<br>
+      而且目标有一个副作用：达成后容易回弹，因为它没有改变你的日常结构。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      不是"目标无用"。没有目标，系统会漂移；<b>目标定方向，系统拿结果</b>，两者都需要。<br>
+      只是要接受：<b>目标可以少改，系统必须常调。</b>多数人反过来了。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把每个目标翻译成一句 <b>"每周固定做什么"</b>。翻不出来，说明还停在愿望。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#22c55e">
+    <div class="e-head"><span class="e-no">E3</span><div class="e-title">复利怕中断</div></div>
+    <div class="orig">中断的代价不是"少了一次"，是斜率回落 + 重启成本 + 身份证据的削弱。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      复利曲线的价值全部在"连续"上。一次中断的损失远大于 1/n——它同时损失了三样东西：累积本身、重启的心理成本、以及"我是个能坚持的人"这个身份证据。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      不等于"一天都不能断，断了就完了"。这种完美主义本身会导致彻底放弃（"反正已经破了"）。<br>
+      正确姿态：<b>断了就当天或次日接上，不追加惩罚，不重构叙事。</b>
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      给每个长期习惯定一个<b>最小可执行版本</b>——忙到极限也能做到的那种（跑步 5 分钟、读一页）。<br>
+      目标是<b>不断线</b>，不是每次都做到最好。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#22c55e">
+    <div class="e-head"><span class="e-no">E4</span><div class="e-title">摩擦方向决定行为</div></div>
+    <div class="orig">人不是按"应该"行动，是按"阻力最小"行动。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      改行为最有效的手段是<b>改环境</b>，不是加意志力。<br>
+      所以环境设计的目标不是"整洁"，是<b>"有倾向"</b>：让正确行为的阻力最小，让错误行为的阻力最大。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      环境设计有效，但它不解决"目标本身是错的"这类问题。<br>
+      而且过度依赖环境设计会让人丧失在恶劣环境下的能力——它是放大器，不是替代品。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      想让某事发生 → 先把它变成离你最近的选项；<br>
+      想让某事不发生 → 先给它加一步摩擦。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#22c55e">
+    <div class="e-head"><span class="e-no">E5</span><div class="e-title">反馈速度决定学习速度</div></div>
+    <div class="orig">学习率 ≈ 反馈回路速度 × 反馈质量。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      写代码比读理论学得快，因为报错是即时的。反馈越慢的领域，进步越慢——不是因为难，是因为你的错误要很久才显形。<br>
+      这也是为什么"熬年头"不等于"成长"：年头长，反馈次数可能很少。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      有些领域的反馈天然慢（战略决策、养育、长期健康），强行要求即时反馈会导致短视。<br>
+      这类领域要人为造<b>代理指标</b>（process metrics），但不能忘了它只是代理。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      进入任何想变强的领域，先问：<b>"我多快能知道自己做对没有？"</b>如果不能很快，先设计一个能很快的中间环节。
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ 意义层 ============ -->
+<section id="sF">
+  <div class="sec-h"><span class="cn">Layer F</span><h2>意义层 · 存在与方向</h2><span class="sec-time">3 min</span></div>
+  <p class="sec-desc">这一层不解决效率问题，它解决<b>"值不值得"</b>。前面五层都做对了，这一层空着，还是会觉得不对劲。</p>
+
+  <div class="entry" style="--lc:#6366f1">
+    <div class="e-head"><span class="e-no">F1</span><div class="e-title">控制二分法</div></div>
+    <div class="orig">事情分两类：我能控制的（判断、行动）和我不能控制的（结果、他人、过去）。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      焦虑的本质，是把大量注意力投在右栏（不可控），然后在左栏（可控）感到无力。<br>
+      把注意力搬回左栏，是唯一有效的方向——不是因为能改变结果，而是因为那才是你能施加影响的地方。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      <b>这不是躺平的借口。</b>"不能控制结果"不等于"不必尽力"——<b>尽力本身在可控制的那一栏里</b>。<br>
+      也不能用它来回避责任（"别人的感受我控制不了"——但你如何对待别人，是可控的）。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      焦虑时把事情分两栏写下来，<b>只在左栏花时间</b>，右栏写一句"这不是我的事"然后合上。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#6366f1">
+    <div class="e-head"><span class="e-no">F2</span><div class="e-title">意义是建构的，不是被发现的</div></div>
+    <div class="orig">没有"你的意义"在外面等你去找到——意义是你投入进去的，不是从事情里挖出来的。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      同一件事，有人觉得是苦役，有人觉得是修行。差别不在事，在投入方式。<br>
+      "寻找人生意义"这个说法本身就误导：它暗示意义是一个埋着的答案，只要找对地方就有。结果是把大量时间花在寻找上，而不是在投入上。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      这不代表"任何事都可以有意义"，也不代表要忍受明显在消耗你的处境。<br>
+      建构需要真实条件：<b>一定程度的自主、胜任、联结。</b>缺了这三样，再努力建构也建构不出来——那时该换环境，不是换心态。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      与其问"什么有意义"，不如问 <b>"我愿意为什么投入？"</b><br>
+      投入在前，意义在后。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#6366f1">
+    <div class="e-head"><span class="e-no">F3</span><div class="e-title">身份驱动行为</div></div>
+    <div class="orig">最稳定的行为改变来自身份改变，不是目标改变。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      "我要跑步"很难持续，因为它是一次性的努力；"我是个跑步的人"会自动产生行为，因为它改变的是<b>默认设置</b>。<br>
+      身份的作用是让决策不再需要决策。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      身份必须由证据喂养，否则会变成空头标签（发愿式的"我是个自律的人"）。<br>
+      顺序不能反：<b>先有小的行为证据，身份才站得住。</b>身份的建立是行为的结果，不是原因。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把"我要做 X"改成 <b>"我是个做 X 的人"</b>，然后问：<b>"那样的人此刻会怎么做？"</b>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ 元层 ============ -->
+<section id="sG">
+  <div class="sec-h"><span class="cn">Meta</span><h2>元层 · 关于这套逻辑本身</h2><span class="sec-time">3 min</span></div>
+  <p class="sec-desc">这一层是最容易被跳过、也最关键的一层。<b>一份没有排序、没有边界、没有触发条件的原则清单，只是一堆好看的话。</b></p>
+
+  <div class="entry" style="--lc:#94a3b8">
+    <div class="e-head"><span class="e-no">G1</span><div class="e-title">原则必须在冲突时能排序，否则等于没有</div></div>
+    <div class="orig">两条原则打架的时候，你按哪条？无法回答这个问题，说明它们还只是格言。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      "课题分离"和"对他人的责任"会打架；"拒绝外部认同"和"接受反馈"会打架；"行动先于动机"和"想清楚再动"会打架。<br>
+      价值观不是原则的集合，是<b>冲突时的排序</b>。这就是为什么我建议先给核心 7 条定序——<b>那个顺序就是你的价值观。</b>
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      排序只在<b>真两难</b>时动用。日常小决定不必搬出排序表——把每件事都升级成"价值观抉择"，是另一种内耗。<br>
+      排序的目的是<b>减少纠结</b>，不是增加仪式感。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把核心 7 条排一个序，写在最显眼的地方。以后遇到两难，按序裁决，不再重新讨论。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#94a3b8">
+    <div class="e-head"><span class="e-no">G2</span><div class="e-title">每条原则都有适用边界，包括"要有边界"这条</div></div>
+    <div class="orig">一个从没被打破过的原则，通常不是信念，是执念。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      所有原则都是<b>有条件的启发式</b>，不是定律。它们的价值在于降低重复犯错，不是保证正确。<br>
+      判断自己是在"坚持原则"还是"被原则绑架"，看一个信号：<b>当现实反复给出反例时，你是调整原则，还是加大力度？</b>
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      "给原则写边界"这件事本身也有边界。<br>
+      不是每条原则都需要显式边界——被反复验证过的那些（"睡眠不足会削弱判断力"）可以当默认设置。<br>
+      边界主要是写给<b>容易被滥用</b>的那些：凡是"听起来很爽、用完人际关系变差"的原则，都值得单独标一句不适用条件。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      给每一条重要原则写一句"什么情况下这条不适用"。写不出来的，说明你还没真正理解它。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#94a3b8">
+    <div class="e-head"><span class="e-no">G3</span><div class="e-title">知道 ≠ 做到。逻辑不会自动变成行为</div></div>
+    <div class="orig">底层逻辑的落地形式不是"记住"，是"装一个触发条件"。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      你读完这份清单不会变得更好——除非你把每一条翻译成 <b>"当 X 发生时，我做 Y"</b>。<br>
+      没有触发条件的道理是装饰。人不会在执行时刻回忆起抽象原则，只会执行被提前写好的条件。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      ① 触发条件会<b>僵化</b>。装好后过一段时间可能已经不合身，需要定期检查，否则它从工具变成新的自动反应。<br>
+      ② 不是所有原则都能写成触发条件。有些更接近<b>视角</b>（比如"意义是建构的"），靠反复重读慢慢内化，装不出一个触发器。要分清哪些是规则、哪些是镜头。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      从这份清单里挑 <b>3 条</b>，各写一个触发条件，贴在你会看到的地方。一个月后再加 3 条。<br>
+      不要试图同时改 27 条——那是又一次用"知道"冒充"做到"。
+    </div></div>
+  </div>
+
+  <div class="entry" style="--lc:#94a3b8">
+    <div class="e-head"><span class="e-no">G4</span><div class="e-title">少而深 &gt; 多而浅</div></div>
+    <div class="orig">一份能背下来的 7 条，胜过一份读不完的 30 条。</div>
+    <div class="field"><div class="k">机制</div><div class="v">
+      原则要在压力时刻被调用，而压力时刻你只有几秒钟。那时能想起来的，只有最熟的那三五条。<br>
+      清单太长会稀释熟练度——你以为你拥有 30 条，实际一条也用不上。
+    </div></div>
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      "少而深"不代表清单不该增长。<b>问题从来不是长，是没有分层。</b><br>
+      核心 7 条要背下来（反复调用），其余当作展开阅读（需要时来查）。分层之后，清单变长是好事——它说明你的思考深度在增加。
+    </div></div>
+    <div class="field act"><div class="k">动作</div><div class="v">
+      把这 7 条背下来。其余 24 条当作<b>展开阅读</b>，需要时回来查，不要求记住。
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ 冲突仲裁 ============ -->
+<section id="sH">
+  <div class="sec-h"><span class="cn">Arbitration</span><h2>冲突仲裁表</h2><span class="sec-time">3 min</span></div>
+  <p class="sec-desc">这是整份文档里最实用的一张表。<b>底层逻辑的价值，全在冲突时的裁决方式上。</b></p>
+  <table>
+    <thead><tr><th>两条原则打架时</th><th>怎么裁</th></tr></thead>
+    <tbody>
+      <tr><td>课题分离 ↔ 共情与责任</td><td>看<b>行动的主语</b>。感受可以很深地进入对方的处境，但行动必须分清归属：指向"我做什么"是健康的，指向"他应该做什么"就过了界。</td></tr>
+      <tr><td>拒绝外部认同 ↔ 接受反馈</td><td>看<b>能否翻译成动作</b>。能翻译成"下一步做什么"的，是信息，收下；只能指向"你这个人怎么样"的，是身份评价，退回。</td></tr>
+      <tr><td>行动先于动机 ↔ 想清楚再动</td><td>看<b>可逆性</b>。可逆 → 先动，错了就改；不可逆 → 先想，至少停一晚。</td></tr>
+      <tr><td>环保环境设计 ↔ 靠意志硬扛</td><td>看<b>重复性</b>。长期重复的事，用环境设计；一次性、不可预设计的事，才动用意志。意志是稀缺资源，别用来解决结构问题。</td></tr>
+      <tr><td>系统 &gt; 目标 ↔ 目标驱动</td><td>看<b>层次</b>。目标定方向（少改），系统拿结果（常调）。反过来的话，你会不停换方向却不改做法。</td></tr>
+      <tr><td>控制二分法 ↔ 尽力与投入</td><td>看<b>归类</b>。"尽力"属于可控制的那一栏，"结果"不属于。控制二分法从来不是不作为的理由——它只是告诉你力气往哪使。</td></tr>
+      <tr><td>情绪可堪破 ↔ 情绪是信号</td><td>看<b>有无新信息</b>。情绪在传递具体信息（风险、边界、失去）→ 读它；只是重复、没有新内容 → 那是反刍，可以破。</td></tr>
+      <tr><td>接纳现状 ↔ 改变现状</td><td>看<b>可改变性</b>。先诚实评估这件事在现有条件下能不能变。能变 → 去变；不能变 → 接纳，然后把能量移到能变的地方。顺序反了会变成两种病：对可改变的认命，对不可改变的较劲。</td></tr>
+      <tr><td>自我关怀 ↔ 高标准</td><td>看<b>语言是否指向行动质量</b>。指向"接下来怎么做更好" → 真关怀；只指向"舒服一点、算了" → 是放纵。</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="empty" id="emptyHint">没有匹配的条目。试试更短的关键词，或点掉上面的筛选。</div>
+
+<!-- ============ 免责声明 ============ -->
+<section id="disclaimer">
+  <div class="disclaimer">
+    <h2>免责声明</h2>
+    <p>请在使用本材料之前完整阅读以下内容。继续阅读即表示你理解并接受这些说明。</p>
+
+    <h4>一、这不是专业建议</h4>
+    <p>本文档是<b>个人思考的记录与整理</b>，不是学术论文、临床指南或任何形式的专业意见。它<b>不构成</b>心理咨询、精神医疗、法律、财务、投资或职业建议。任何涉及你身心健康、法律权益或财产的决定，请咨询相应领域的持证专业人士。</p>
+
+    <h4>二、这不是真理清单</h4>
+    <p>本文档中的每一条都是<b>有条件的启发式</b>，不是定律。它们的作用是降低重复犯错的概率，而不是保证正确。每一条都有反例，每一条都可能不适用于你的处境。如果某一条与你的亲身经验或你自己的数据冲突，<b>请相信你的经验，而不是这份文档。</b></p>
+
+    <h4>三、关于引用与准确性</h4>
+    <p>文中提及的心理学与行为科学概念（如课题分离、蔡格尼克效应、卡普曼三角、自我损耗的复现争议、幸存者偏差、控制二分法等）均为<b>公共思想资源</b>，其著作权与解释权属于各自的原始提出者与研究者。本文档对这些概念的引用做了<b>面向一般读者的通俗化转述</b>，可能省略了前提条件、学术争议与适用范围，存在简化失真的可能。<b>如需用于学术或专业用途，请查阅原始文献。</b>本文档不对其准确性、完整性或时效性作任何保证。</p>
+
+    <h4>四、关于内容生成方式</h4>
+    <p>本文档中标注为「作者原话」的 4 条来自作者本人；其余条目是作者借助 AI 工具，对公共思想资源进行的<b>汇编、改写与结构化整理</b>。整理过程中可能存在理解偏差、归因不准确或表述不当之处。文中观点不代表任何被引用理论的原始作者。</p>
+
+    <h4>五、责任限制</h4>
+    <p>在适用法律允许的最大范围内，作者与贡献者<b>不对因使用或依赖本材料而产生的任何直接或间接损失承担责任</b>。你如何理解、采纳或拒绝本文档中的任何内容，以及由此产生的一切后果，由你自行负责。</p>
+
+    <h4>六、一个特别的提醒</h4>
+    <div class="crisis">
+      <b>如果你正处于心理危机中</b>
+      <p>本文档涉及情绪与自我认知的话题，但它<b>不具备</b>处理心理危机的能力。如果你正在经历持续的情绪低落、强烈的自我否定、自伤或自杀念头，请不要试图靠一份清单自行处理——请立即联系专业心理援助。</p>
+      <p style="margin-top:9px">
+        · 全国统一心理援助热线：<b>12356</b>（国家卫健委，24 小时）<br>
+        · 紧急情况请拨打 <b>120</b>，或前往最近的医院急诊
+      </p>
+      <p style="margin-top:9px">寻求帮助是能力，不是软弱。这一条不在「控制二分法」的可控制范围内——请把它交给专业的人。</p>
+    </div>
+
+    <h4>七、许可协议</h4>
+    <p>本作品采用<b>知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议（CC BY-NC-SA 4.0）</b>进行许可。你可以自由复制、发行、改编本作品，但必须：<b>署名</b>、<b>不得用于商业目的</b>、<b>以相同方式共享</b>。<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">查看协议全文</a>。</p>
+
+    <div class="reflist">
+      <h4>概念来源方向（延伸阅读）</h4>
+      <ol>
+        <li>阿尔弗雷德·阿德勒 —— 课题分离、目的论</li>
+        <li>爱比克泰德 / 马可·奥勒留 —— 斯多葛学派的控制二分法</li>
+        <li>丹尼尔·卡尼曼 —— 双系统、可得性启发与确认偏误</li>
+        <li>米哈里·契克森米哈赖 —— 心流</li>
+        <li>斯蒂芬·卡普曼 —— 戏剧三角</li>
+        <li>布卢玛·蔡格尼克 —— 蔡格尼克效应（未完成任务的记忆优势）</li>
+        <li>Edward Deci &amp; Richard Ryan —— 自我决定理论</li>
+        <li>Jim Loehr &amp; Tony Schwartz —— 《全情投入》能量四维度</li>
+        <li>Andy Clark &amp; David Chalmers —— 延展心智</li>
+        <li>Saxbe &amp; Repetti (2010) —— 家居环境与皮质醇节律的相关性研究</li>
+        <li>Ray Dalio —— 痛苦 + 反思 = 进步</li>
+      </ol>
+      <p style="margin-top:10px;font-size:12px;color:var(--muted)">
+        以上仅为概念来源的方向指引，不代表上述作者或研究者认同本文档的任何观点。<b>本文档未逐一核实一手文献</b>，请以原始出版物为准。
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footgrid">
+    <div>
+      <b>怎么用这份东西</b><br>
+      1. 先读「作者已说出的四条」——那四条是原点，其余都是延伸，优先级应低于它们。<br>
+      2. 给核心 7 条排一个序。那个顺序就是你的价值观，比任何单条原则都重要。<br>
+      3. 挑 3 条写成触发条件：「当 X 发生时，我做 Y」。一个月后再加 3 条。<br>
+      4. 半年后回头重读，看哪几条你已经内化到不需要想起，哪几条还在原地——后者才是你真正的功课。<br>
+      5. 与第二、三条相比，这一条最重要：<b>数据胜过道理。</b>
+    </div>
+    <div class="lic">
+      <div class="ccbadge">CC <b>BY-NC-SA 4.0</b></div>
+      <div><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">许可协议</a> · <a href="LICENSE">LICENSE</a></div>
+      <div style="margin-top:4px;font-size:11.5px">最后更新：<span id="buildDate">—</span></div>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="回到顶部">↑</button>
+
+</div>
+
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const root=document.documentElement;
+
+/* 主题 */
+root.dataset.theme=localStorage.getItem("lifeLogic.theme")||"dark";
+$("themeBtn").onclick=()=>{
+  const t=root.dataset.theme==="dark"?"light":"dark";
+  root.dataset.theme=t;localStorage.setItem("lifeLogic.theme",t);
+};
+
+/* 搜索 */
+const entries=[...document.querySelectorAll(".entry")];
+entries.forEach(e=>{e.dataset.text=e.textContent.replace(/\s+/g," ").toLowerCase();});
+const emptyHint=$("emptyHint");
+let onlyMine=false,nq="";
+function applyFilter(){
+  let shown=0;
+  entries.forEach(e=>{
+    const okMine=!onlyMine||e.dataset.mine==="1";
+    const okQ=!nq||e.dataset.text.includes(nq);
+    const show=okMine&&okQ;
+    e.hidden=!show;
+    if(show)shown++;
+  });
+  /* 章节：若整节条目都被隐藏，则隐藏该节 */
+  document.querySelectorAll("section").forEach(s=>{
+    const es=[...s.querySelectorAll(".entry")];
+    if(!es.length)return;
+    s.hidden=es.every(e=>e.hidden);
+  });
+  emptyHint.style.display=shown?"none":"block";
+}
+$("q").addEventListener("input",ev=>{
+  nq=ev.target.value.trim().toLowerCase();
+  applyFilter();
+});
+$("onlyMine").onclick=ev=>{
+  onlyMine=!onlyMine;
+  ev.target.classList.toggle("on",onlyMine);
+  ev.target.textContent=onlyMine?"显示全部":"只看作者原话";
+  applyFilter();
+};
+
+/* 打印 */
+$("printBtn").onclick=()=>{
+  if(onlyMine||nq){onlyMine=false;nq="";$("q").value="";$("onlyMine").classList.remove("on");
+    $("onlyMine").textContent="只看作者原话";applyFilter();}
+  setTimeout(()=>window.print(),80);
+};
+
+/* 目录平滑滚动 */
+document.querySelectorAll(".toc a").forEach(a=>{
+  a.onclick=e=>{e.preventDefault();
+    const t=document.querySelector(a.getAttribute("href"));
+    if(t)t.scrollIntoView({behavior:"smooth",block:"start"});};
+});
+
+/* ===== 阅读进度条 ===== */
+const bar=$("progress");
+function onScroll(){
+  const h=document.documentElement;
+  const max=h.scrollHeight-h.clientHeight;
+  const p=max>0?Math.min(1,h.scrollTop/max):0;
+  bar.style.width=(p*100).toFixed(2)+"%";
+  $("toTop").classList.toggle("show",h.scrollTop>700);
+}
+window.addEventListener("scroll",onScroll,{passive:true});
+window.addEventListener("resize",onScroll);
+onScroll();
+
+/* ===== 回到顶部 ===== */
+$("toTop").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+/* ===== 键盘：/ 聚焦搜索，Esc 清空 ===== */
+document.addEventListener("keydown",e=>{
+  if(e.key==="/"&&document.activeElement!==$("q")){e.preventDefault();$("q").focus();}
+  if(e.key==="Escape"&&document.activeElement===$("q")){$("q").value="";nq="";applyFilter();$("q").blur();}
+});
+
+/* ===== 构建日期：优先读 HTML 里的静态标记，避免每次打开都变 ===== */
+(function(){
+  const el=$("buildDate");
+  const b=document.body.dataset.build;
+  if(b){el.textContent=b;return;}
+  /* 回退：用文件自身的 Last-Modified（GitHub Pages 会返回） */
+  fetch(location.href,{method:"HEAD"}).then(r=>{
+    const lm=r.headers.get("last-modified");
+    if(lm){const d=new Date(lm);
+      el.textContent=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+    else el.textContent="—";
+  }).catch(()=>{el.textContent="—";});
+})();
+</script>
+</body>
+</html>
