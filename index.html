@@ -6,19 +6,19 @@
 <title>人生底层逻辑 · 一份可以被反驳的原则清单</title>
 
 <!-- SEO / 分享 -->
-<meta name="description" content="35 条人生底层逻辑，每条都写明机制、边界和可执行动作。附配套的精力审计工具。这不是真理清单，是一份有边界的启发式集合。">
+<meta name="description" content="41 条人生底层逻辑，每条都写明机制、边界和可执行动作。从命与运的世界观讲起，落在一张冲突仲裁表上。这不是真理清单，是一份有边界的启发式集合。">
 <meta name="author" content="life-logic">
-<meta name="keywords" content="人生底层逻辑,第一性原理,心智模型,价值观,精力管理,课题分离,决策">
+<meta name="keywords" content="人生底层逻辑,命与运,命运,第一性原理,心智模型,价值观,精力管理,课题分离,决策">
 <meta name="theme-color" content="#0f1115">
 <link rel="canonical" href="https://moonlit-firefly.github.io/life-logic/">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="人生底层逻辑">
-<meta property="og:description" content="35 条原则，每条都写明机制、边界和可执行动作。做决策时可参照，但与现实冲突时，相信现实。">
+<meta property="og:description" content="41 条原则，每条都写明机制、边界和可执行动作。从命与运的世界观讲起。做决策时可参照，但与现实冲突时，相信现实。">
 <meta property="og:url" content="https://moonlit-firefly.github.io/life-logic/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="人生底层逻辑">
-<meta name="twitter:description" content="35 条原则，每条都写明机制、边界和可执行动作。">
+<meta name="twitter:description" content="41 条原则，每条都写明机制、边界和可执行动作。从命与运的世界观讲起。">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f1115'/><text y='72' x='50' font-size='62' text-anchor='middle' fill='%23c9a54e'>◈</text></svg>">
 
@@ -130,6 +130,21 @@ html[data-theme="light"] .field.act .v{background:color-mix(in srgb,var(--lc) 11
 .field .v ul{margin:0;padding-left:17px}
 .field .v li{margin:3px 0}
 
+/* 命运层 · 模型图 */
+.dgbox{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+  padding:18px 16px 12px;margin:0 0 13px;box-shadow:var(--shadow);overflow-x:auto}
+.dgbox svg{display:block;min-width:560px;width:100%}
+.dgcap{font-size:12px;color:var(--muted);line-height:1.7;margin:10px 4px 2px;min-width:560px}
+.dg .sbox{fill:var(--panel2);stroke:var(--gold);stroke-width:1.2}
+.dg .ubox{fill:var(--panel2);stroke:var(--warn);stroke-width:1.2;stroke-dasharray:4 3}
+.dg .tbox{fill:var(--panel2);stroke:var(--border2);stroke-width:1}
+.dg .lbl{fill:var(--text);font-size:13px;font-weight:600}
+.dg .lbl2{fill:var(--text2);font-size:12px}
+.dg .sub{fill:var(--muted);font-size:11.5px}
+.dg .fl{fill:var(--gold);font-size:12px;font-family:var(--mono);font-weight:600}
+.dg .ln{stroke:var(--border2);stroke-width:1.2;fill:none}
+.dg .lnb{stroke:var(--warn);stroke-width:1.2;fill:none;stroke-dasharray:4 3}
+
 /* 冲突表 */
 table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
 th{text-align:left;font-size:11px;letter-spacing:1.1px;color:var(--muted);text-transform:uppercase;
@@ -175,17 +190,13 @@ tr:last-child td{border-bottom:none}
 .sec-time{font-size:11px;color:var(--muted);font-family:var(--mono);font-weight:500;
   background:var(--panel);border:1px solid var(--border);padding:2px 8px;border-radius:20px;margin-left:auto}
 
-/* 工具入口 */
-.toolcard{display:flex;align-items:center;gap:15px;background:var(--panel);border:1px solid var(--border);
-  border-radius:var(--radius);padding:16px 19px;margin:0 0 30px;text-decoration:none;transition:.17s;
-  box-shadow:var(--shadow)}
-.toolcard:hover{border-color:var(--gold);transform:translateY(-1px)}
-.toolcard .ic{width:38px;height:38px;border-radius:10px;flex:none;display:grid;place-items:center;
-  background:linear-gradient(135deg,#6366f1,#06b6d4);color:#fff;font-size:17px}
-.toolcard .tx{flex:1;min-width:0}
-.toolcard .tx h4{font-size:14px;font-weight:650;color:var(--text);margin-bottom:2px}
-.toolcard .tx p{font-size:12px;color:var(--muted);line-height:1.6}
-.toolcard .go{font-size:18px;color:var(--muted);flex:none}
+/* ===== 作者落款 ===== */
+.signoff{text-align:center;margin:34px 0 34px;padding:32px 20px 28px;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.signoff .sd-quote{font-size:19px;font-weight:700;color:var(--gold);letter-spacing:.4px;
+  line-height:1.7;margin:0}
+.signoff .sd-by{font-size:11.5px;color:var(--muted);font-family:var(--mono);
+  letter-spacing:2px;margin-top:12px}
 
 /* ===== 免责声明 ===== */
 .disclaimer{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--warn);
@@ -242,10 +253,9 @@ footer b{color:var(--text2)}
   body{background:#fff!important;color:#000;font-size:11pt}
   .toolbar,.toc,.empty,#toTop,#progress{display:none!important}
   .wrap{max-width:none;padding:0}
-  .entry,.core,.card{box-shadow:none;break-inside:avoid;page-break-inside:avoid;
+  .entry,.core,.card,.dgbox{box-shadow:none;break-inside:avoid;page-break-inside:avoid;
     -webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .guide,.disclaimer,.notice{box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .toolcard{display:none!important}
+  .guide,.disclaimer,.notice,.signoff{box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   section{break-inside:auto}
   .entry{border-left-width:3px}
   footer{page-break-before:avoid}
@@ -253,7 +263,7 @@ footer b{color:var(--text2)}
 }
 </style>
 </head>
-<body data-build="2026-10-11">
+<body data-build="2026-10-14">
 <div id="progress"></div>
 <div class="wrap">
 
@@ -262,16 +272,16 @@ footer b{color:var(--text2)}
   <h1>人生底层逻辑</h1>
   <p class="lede">
     这是一份<strong>可以互相打架的原则清单</strong>——因为真正的底层逻辑不是格言集，是<b>冲突时的排序依据</b>。<br>
-    35 条原则，每条都写明四件事：<b>原式</b>（一句话）、<b>机制</b>（为什么成立）、<b>边界</b>（什么时候会失效）、<b>动作</b>（具体做什么）。
-    其中 4 条是作者本人已经明确表达的观点，其余 27 条是按六个层次补上的。
+    41 条原则，每条都写明四件事：<b>原式</b>（一句话）、<b>机制</b>（为什么成立）、<b>边界</b>（什么时候会失效）、<b>动作</b>（具体做什么）。
+    其中 5 条是作者本人已经明确表达的观点，其余按<b>七个层次</b>展开：命运层、资源层、边界层、本体层、认知层、行动层、意义层，最后另附元层与冲突仲裁表。
     <b>每条都写了「边界」</b>——因为没有边界的原则一旦被滥用，伤害比没有原则更大。
   </p>
   <div class="statline">
-    <div><b>35</b>条原则</div>
-    <div><b>4</b>条作者原话</div>
-    <div><b>6</b>个层次</div>
+    <div><b>41</b>条原则</div>
+    <div><b>5</b>条作者原话</div>
+    <div><b>7</b>个层次</div>
     <div><b>7</b>条核心速查</div>
-    <div><b>9</b>组冲突裁决</div>
+    <div><b>11</b>组冲突裁决</div>
   </div>
 </header>
 
@@ -290,40 +300,45 @@ footer b{color:var(--text2)}
 <!-- 阅读提示 -->
 <div class="guide">
   <h3><span class="en">How to read</span>阅读提示</h3>
-  <div class="sub">这份材料有它自己的读法。花 30 秒看完这四条，你的收获会明显不同。</div>
+  <div class="sub">这份材料有它自己的读法。花 40 秒看完这五条，你的收获会明显不同。</div>
   <div class="gsteps">
     <div class="gstep">
       <span class="n">01</span>
-      <span class="t">先读 <b>Part I「作者已说出的四条」</b>。那是这份文档的原点，其余 27 条都是由它们延伸出来的。理解了原点，后面的条目才有归属。</span>
+      <span class="t">先读 <b>Part I「作者已说出的四条」</b>。那是这份文档的原点，其余 37 条都是由它们延伸出来的。理解了原点，后面的条目才有归属。</span>
       <span class="m">约 5 分钟</span>
     </div>
     <div class="gstep">
       <span class="n">02</span>
-      <span class="t">再看 <b>「如果只记 7 条」</b>。35 条会稀释熟练度，压力时刻你能想起来的只有最熟的三五条。<b>先给这 7 条排序——那个顺序就是你的价值观。</b></span>
-      <span class="m">约 3 分钟</span>
+      <span class="t">接着读 <b>「命运层」</b>。它不给新技巧，只给一张地图：在这个你无法完全掌控的世界里，哪些东西是你能动的。<b>先有这张图，后面每一层才不会用错力气。</b></span>
+      <span class="m">约 6 分钟</span>
     </div>
     <div class="gstep">
       <span class="n">03</span>
-      <span class="t">然后<b>按层挑</b>，不必通读。六个层次是独立的，哪一层最近让你困扰，就从哪一层开始。每层约 5 分钟。</span>
-      <span class="m">按需</span>
+      <span class="t">再看 <b>「如果只记 7 条」</b>。41 条会稀释熟练度，压力时刻你能想起来的只有最熟的三五条。<b>先给这 7 条排序——那个顺序就是你的价值观。</b></span>
+      <span class="m">约 3 分钟</span>
     </div>
     <div class="gstep">
       <span class="n">04</span>
+      <span class="t">然后<b>按层挑</b>，不必通读。六个实操层次是独立的，哪一层最近让你困扰，就从哪一层开始。每层约 5 分钟。</span>
+      <span class="m">按需</span>
+    </div>
+    <div class="gstep">
+      <span class="n">05</span>
       <span class="t">最后看 <b>「冲突仲裁表」</b>。这是全篇最实用的一页——底层逻辑的价值不在单条格言，而在两条打架时你按哪条。</span>
       <span class="m">约 3 分钟</span>
     </div>
   </div>
   <div class="gmeta">
-    <span>快速版（Part I + 核心 7 条）约 <b>8 分钟</b></span>
-    <span>通读约 <b>30 分钟</b></span>
-    <span>建议读法：<b>挑 3 条写成触发条件</b>，不要试图同时改 35 条</span>
+    <span>快速版（Part I + 命运层 + 核心 7 条）约 <b>15 分钟</b></span>
+    <span>通读约 <b>40 分钟</b></span>
+    <span>建议读法：<b>挑 3 条写成触发条件</b>，不要试图同时改 41 条</span>
     <span>一个请求：<b>读的时候准备反驳</b></span>
     <span>可搜索 / 可只看作者原话 / 可打印</span>
   </div>
 </div>
 
 <div class="toolbar">
-  <div class="searchbox"><span>⌕</span><input id="q" type="search" placeholder="搜索原则，例如「沉没成本」「边界」「反刍」……"></div>
+  <div class="searchbox"><span>⌕</span><input id="q" type="search" placeholder="搜索原则，例如「沉没成本」「边界」「命运」「反刍」……"></div>
   <button class="btn" id="onlyMine">只看作者原话</button>
   <button class="btn" id="themeBtn">◐ 主题</button>
   <button class="btn" id="printBtn">🖨 打印 / PDF</button>
@@ -331,6 +346,7 @@ footer b{color:var(--text2)}
 
 <nav class="toc">
   <a href="#s1" style="--c:#c9a54e">一 · 作者已说出的四条</a>
+  <a href="#s0" style="--c:#c9a54e">命运层 · 什么能改，什么不能改</a>
   <a href="#sA" style="--c:#f59e0b">资源层 · 能量与注意力</a>
   <a href="#sB" style="--c:#ec4899">边界层 · 你与他人</a>
   <a href="#sC" style="--c:#8b5cf6">本体层 · 情绪与自我</a>
@@ -340,16 +356,6 @@ footer b{color:var(--text2)}
   <a href="#sG" style="--c:#94a3b8">元层 · 关于这套逻辑本身</a>
   <a href="#sH" style="--c:#c9a54e">冲突仲裁表</a>
 </nav>
-
-<!-- 配套工具 -->
-<a class="toolcard" href="tools/energy-audit.html">
-  <span class="ic">⚡</span>
-  <span class="tx">
-    <h4>配套工具 · 精力审计与能量管理系统</h4>
-    <p>A1–A4 那四条讲的是"精力该怎么分配"。光讲没用——这个工具让你记录 14 天，算出你自己的峰值时段、最大泄漏点和环境摩擦成本。纯本地运行，数据不上传。</p>
-  </span>
-  <span class="go">→</span>
-</a>
 
 <!-- 核心 7 -->
 <div class="core">
@@ -498,10 +504,239 @@ footer b{color:var(--text2)}
   </div>
 </section>
 
+<!-- ============ 命运层 ============ -->
+<section id="s0">
+  <div class="sec-h"><span class="cn">Layer 0</span><h2>命运层 · 什么能改，什么不能改</h2><span class="sec-time">6 min</span></div>
+  <p class="sec-desc">前面那四条讲的是"能量怎么分配"。这一层往回退一步，回答一个更靠前的问题：<b>在一个你无法完全掌控的世界里，究竟哪些东西是你能动的？</b>这一层不给新技巧，它给的是一张地图——没有这张地图，后面每一层都可能在错的地方使劲。</p>
+
+  <!-- 0.1 -->
+  <div class="entry mine" style="--lc:#c9a54e" data-mine="1">
+    <div class="e-head">
+      <span class="e-no">0.1</span>
+      <div class="e-title">命格、命、运：先把三个词分清楚<span class="badge">作者原话</span></div>
+    </div>
+    <div class="orig">命格指一个系统的所有，命格随事件变化，具有时刻性，根据分类拆为命理……命指一个系统的过去、现在和未来趋势。一个系统从出生就具有先天之命，命理以外的影响称之为运。命与运共同交织，这就是命运。</div>
+
+    <div class="field"><div class="k">机制</div><div class="v">
+      我们平时把"命"和"运"混着用，结果只剩两种态度：要么认命，要么不信命。但只要把词拆开，它们其实是可以分开谈的。<br>
+      上面这套说法对应到三个标准概念上，是这样：
+      <ul>
+        <li><b>命格</b>——你在某一刻的<b>完整状态</b>。它不是标签，是一个<b>时间切片</b>：每时每刻都有值，也每时每刻都可能变。</li>
+        <li><b>命理</b>——命格上的<b>坐标轴</b>：性别、年龄、样貌、身体素质、家庭、职业、伴侣、三观……你挑哪些轴，决定你能看见什么。</li>
+        <li><b>命</b>——状态的<b>整条轨迹</b>：过去 + 现在 + 未来趋势。命格只是这条线上的一点。</li>
+        <li><b>运</b>——<b>外生输入</b>：无法从你当前的状态和规则里推出来的那股力量。</li>
+      </ul>
+      写成一条式子就是：<b>G(t+1) = F( G(t), U(t) )</b>。G 是命格，U 是运，F 是你"接下来会怎样"的规则。<br>
+      这条式子只干一件事：<b>把"命"和"运"从两个名词，变成两个位置。</b>凡是能从你当前状态算出来的，都是命的展开；算不出来的，才叫运。
+    </div></div>
+
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      <b>"运"不是发生在你身上的事，是你的模型算漏的那部分。</b>这句话听着像抬杠，但它有个直接后果：<b>模型越强，运越小</b>——你所谓的"运气不好"，有一部分只是你还没看见。<br>
+      但也不能推到底：有一类运是<b>不可约</b>的（混沌放大、他人的自由意志）。把这一类也当成"我学得还不够"，会变成控制狂。<br>
+      还有"先天"这个词的分寸。"出生就有的"严格说不是命运，是<b>初始条件和规则</b>；命运是这两样东西与后来所有运共同迭代出来的，出生时远未确定。而且"出生"这个起点是人为选的——换一个起点，"什么算先天"就变了。
+    </div></div>
+
+    <div class="field act"><div class="k">动作</div><div class="v">
+      <ul>
+        <li>遇到一件"躲不开"的事，先问一句：它变化得<b>比我快，还是比我慢</b>？（下一条展开）</li>
+        <li>把困扰你的东西写下来，逐个标注：哪些能从现状推算（命的展开），哪些是外来的（运）。这两类要用完全不同的策略。</li>
+        <li>不说"我运气不好"，改说"<b>我没算到的是什么</b>"——后者有下一步，前者没有。</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="dgbox">
+    <svg class="dg" viewBox="0 0 680 250" role="img" aria-label="命与运的状态转移模型">
+      <title>命与运的状态转移模型</title>
+      <desc>运作为外生输入作用于命格，命格按规则 F 迭代演化，累积出的整条路径就是命。</desc>
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+      <rect class="ubox" x="147" y="26" width="120" height="36" rx="8"/>
+      <text class="lbl2" x="207" y="49" text-anchor="middle">运 U(t)</text>
+      <rect class="ubox" x="337" y="26" width="120" height="36" rx="8"/>
+      <text class="lbl2" x="397" y="49" text-anchor="middle">运 U(t+1)</text>
+      <rect class="ubox" x="527" y="26" width="120" height="36" rx="8"/>
+      <text class="lbl2" x="587" y="49" text-anchor="middle">运 U(t+2)</text>
+      <path class="lnb" d="M207 62 L207 118" marker-end="url(#ah)"/>
+      <path class="lnb" d="M397 62 L397 118" marker-end="url(#ah)"/>
+      <path class="lnb" d="M587 62 L587 118" marker-end="url(#ah)"/>
+      <rect class="sbox" x="60" y="100" width="104" height="52" rx="8"/>
+      <text class="lbl" x="112" y="131" text-anchor="middle">命格 G(t)</text>
+      <rect class="sbox" x="250" y="100" width="104" height="52" rx="8"/>
+      <text class="lbl" x="302" y="131" text-anchor="middle">命格 G(t+1)</text>
+      <rect class="sbox" x="440" y="100" width="104" height="52" rx="8"/>
+      <text class="lbl" x="492" y="131" text-anchor="middle">命格 G(t+2)</text>
+      <path class="ln" d="M164 126 L244 126" marker-end="url(#ah)"/>
+      <path class="ln" d="M354 126 L434 126" marker-end="url(#ah)"/>
+      <path class="ln" d="M544 126 L624 126" marker-end="url(#ah)"/>
+      <text class="fl" x="204" y="150" text-anchor="middle">F</text>
+      <text class="fl" x="394" y="150" text-anchor="middle">F</text>
+      <text class="fl" x="584" y="150" text-anchor="middle">F</text>
+      <rect class="tbox" x="40" y="180" width="600" height="50" rx="12"/>
+      <text class="lbl" x="340" y="204" text-anchor="middle">命 = 轨迹</text>
+      <text class="sub" x="340" y="220" text-anchor="middle">过去 · 现在 · 未来趋势　—　G(t) 的全部迭代累积</text>
+    </svg>
+    <p class="dgcap">关键在于：<b>同一个运，落在不同的命格上，产生的变化完全不同。</b>同一次裁员，有人破产，有人转型。而规则 F 本身也可以被改写——下下条讲的就是这件事。</p>
+  </div>
+
+  <!-- 0.2 -->
+  <div class="entry" style="--lc:#c9a54e">
+    <div class="e-head">
+      <span class="e-no">0.2</span>
+      <div class="e-title">命是慢变量，运是快变量</div>
+    </div>
+    <div class="orig">命与运的差别，不在"注定"和"偶然"，在变化的快慢。</div>
+
+    <div class="field"><div class="k">机制</div><div class="v">
+      <b>同一个东西，在不同的时间尺度上，既是命又是运。</b>以一天为窗口，伴侣是命、天气是运；以十年为窗口，伴侣也可能换——它就成了运。<br>
+      所以"这到底是命还是运"这个问题，必须先问一句：<b>你在多长的时间尺度上看？</b><br>
+      这一条确立之后，宿命论和随机论会同时失效：世界既不是写好的剧本，也不是一团噪声，它是<b>一堆变化速率不同的变量</b>。你之所以觉得某件事"躲不开"，通常只是因为它变得比你快。
+    </div></div>
+
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      速率是相对的，所以"哪些算慢变量"没有绝对答案，取决于你关心什么。<br>
+      更要紧的一点：<b>慢 ≠ 不能改。</b>三观变得极慢，却恰恰是最可改的（见 0.4）。把"慢"读成"不能改"，是这一条最常见的误用。<br>
+      反过来说，快变量也不等于不重要：一次事故是快的，但它可以永久改写你的命格。快的只是它的<b>发生</b>，不是它的<b>影响</b>。
+    </div></div>
+
+    <div class="field act"><div class="k">动作</div><div class="v">
+      遇到问题时先分类，再决定策略：
+      <ul>
+        <li><b>快变量</b>（情绪、运气、别人的态度）→ 别做长期计划，做<b>应对准备</b></li>
+        <li><b>慢变量</b>（习惯、关系结构、身体底子）→ 别指望一次决定解决，做<b>持续投入</b></li>
+      </ul>
+      最常见的浪费是方向用反：对快变量下决心（"我再也不生气了"），对慢变量求速效（"一个月练出腹肌"）。
+    </div></div>
+  </div>
+
+  <!-- 0.3 -->
+  <div class="entry" style="--lc:#c9a54e">
+    <div class="e-head">
+      <span class="e-no">0.3</span>
+      <div class="e-title">你控制不了运，但能决定它的转化率</div>
+    </div>
+    <div class="orig">运落下来的时候你管不了；运落地之后会变成什么，你管得了一大半。</div>
+
+    <div class="field"><div class="k">机制</div><div class="v">
+      同样一次冲击，落在不同的命格上，结果天差地别。这个差异不是"运气"造成的第二次差异，它来自<b>命格本身的转化能力</b>：
+      <ul>
+        <li><b>知识存量</b>决定你能不能看懂它</li>
+        <li><b>身体健康</b>决定你有没有力气接住它</li>
+        <li><b>现金冗余</b>决定你能不能在它过去之前等着</li>
+        <li><b>关系网络</b>决定有没有人替你分担</li>
+      </ul>
+      所以"运气好"其实有两种完全不同的来源：<b>运本身好</b>，或者<b>命格让它转化得好</b>。第一种你无法控制，第二种可以慢慢建。<b>把"运气"整体当成不可控的，是一种智力上的偷懒。</b>
+    </div></div>
+
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      提高转化率<b>不等于</b>能把所有运都变好。有些冲击会直接击穿任何准备——重病、至亲离世、系统性崩盘。这时候"提高转化率"的说法会变成一种隐性指责。<br>
+      <b>在真正的灾难面前，允许自己只是承受，不欠世界一个进步。</b><br>
+      还有一个诚实的限制：准备度永远不完备。你不知道自己会遇到什么，所以转化能力只能按"<b>可迁移</b>"来建，不能按某个具体事件定制。
+    </div></div>
+
+    <div class="field act"><div class="k">动作</div><div class="v">
+      <ul>
+        <li>问一句："<b>如果明天我最怕的那件事发生，我现在缺什么？</b>"——缺的那样东西，就是该建的转化能力。</li>
+        <li>优先建四样可迁移的：<b>知识</b>（看懂）、<b>健康</b>（接住）、<b>现金</b>（等得起）、<b>关系</b>（有人分担）</li>
+        <li>建的时候不要期待即时回报。转化能力的特征是：<b>平时看不出用，关键时刻一次性兑现。</b></li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- 0.4 -->
+  <div class="entry" style="--lc:#c9a54e">
+    <div class="e-head">
+      <span class="e-no">0.4</span>
+      <div class="e-title">三观是唯一能改写规则的变量</div>
+    </div>
+    <div class="orig">状态可以变，规则也可以变——而规则只由一样东西改写：你怎么解释世界。</div>
+
+    <div class="field"><div class="k">机制</div><div class="v">
+      命格里大多数分量只能改你的<b>状态</b>：赚了钱、换了工作、生病了。但三观改的是<b>规则本身</b>——它决定同一件事落在你身上会被解释成威胁还是信息，从而直接决定你被推到哪里去。<br>
+      更关键的是：三观是唯一一个<b>不需要事件就能被修改</b>的分量。体质得靠锻炼，职业得靠机会，而一套解释框架，可以在一个下午被自己想通。<br>
+      这就是命运不是被动轨道的原因。<b>运能改写命，命也能改写运的效力</b>——两者互为函数，这才是"交织"的真正含义：不是两条线平行，是互相重写。
+    </div></div>
+
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      这一条最容易滑向"只要想通了就够了"的精神胜利法——那是"知道 ≠ 做到"换了个样子。<br>
+      三观改写规则的效果，只有在<b>遇到真事</b>的时候才检验得出来。顺境里改三观，成本极低，也几乎不留痕迹；真正被改写，往往发生在你不得不面对反例之后。<br>
+      还有一层：<b>不是所有痛苦都能靠重新解释化解。</b>有些处境需要的是改变条件，不是改变看法。"把一切都想通"，有时是逃避行动的精致版本。
+    </div></div>
+
+    <div class="field act"><div class="k">动作</div><div class="v">
+      <ul>
+        <li>只在<b>事情发生之后</b>问，不在发生前空想："这件事改变了我的哪个判断？"</li>
+        <li>一次只动一条。挑一个最近反复让你难受的模式，问：<b>"我对它的默认解释是什么？有没有第二种同样成立的解释？"</b></li>
+        <li>检验标准不是"想通了没有"，而是——<b>下次同类事情发生时，我的第一反应变了没有。</b></li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- 0.5 -->
+  <div class="entry" style="--lc:#c9a54e">
+    <div class="e-head">
+      <span class="e-no">0.5</span>
+      <div class="e-title">你改不了运，但可以换运的分布</div>
+    </div>
+    <div class="orig">换不了单次掷骰子的结果，但可以换自己在哪张桌子上掷。</div>
+
+    <div class="field"><div class="k">机制</div><div class="v">
+      运不可控，但<b>运的分布</b>是可选择的。换城市、换行业、换圈子、换每天接触的人——你并没有变得更幸运，你只是换了一组更容易出现的可能性。<br>
+      这是所有路径里杠杆最高的一条，因为它一次性改变了<b>之后所有抽样的概率</b>。<br>
+      但代价是对称的：<b>扩大暴露面会同时放大好运和坏运。</b>所以这不是"更主动就更好"，而是一个风险偏好问题——愿不愿意用双倍的坏运气，去换双倍的好运气。<b>这个问题没有标准答案，只有你的答案。</b>
+    </div></div>
+
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      <b>换分布需要可迁移资本</b>，否则只是换了个地方重来。而且"换环境"在年轻时成本很低，在有责任约束之后成本急剧上升——它的窗口期比大多数人以为的短。<br>
+      反向的风险同样真实：<b>"重新开始"经常被高估。</b>换环境的同时你也放弃了原来的积累，而积累通常是复利的（见 E3）。<br>
+      最后，换环境并不改变你带在身上的那部分命格。如果问题出在你自己的解释框架上（见 0.4），换到哪里都会重演。
+    </div></div>
+
+    <div class="field act"><div class="k">动作</div><div class="v">
+      <ul>
+        <li>把当前环境写成一张<b>运的分布表</b>：在这里，什么好事容易发生？什么坏事容易发生？各自的频率大概是多少？——写不出来，说明你并不了解自己所在的地方。</li>
+        <li>换之前先问：<b>我带走的是什么？离开这个环境，它还成立吗？</b>（可迁移资本：技能、口碑、认知、身体）</li>
+        <li>做<b>小规模抽样</b>再决定：先接触目标环境三个月，而不是直接辞职搬走。</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <!-- 0.6 -->
+  <div class="entry" style="--lc:#c9a54e">
+    <div class="e-head">
+      <span class="e-no">0.6</span>
+      <div class="e-title">说「这是命」必须付代价</div>
+    </div>
+    <div class="orig">一个能解释一切的说法，等于什么都没解释。</div>
+
+    <div class="field"><div class="k">机制</div><div class="v">
+      任何结果都可以被事后归入命或运——成功了叫"运好"，失败了叫"运差"或"命该如此"。四种说法都成立，都没有代价，于是<b>都没有信息量</b>。<br>
+      <b>解释力无上限，等于预测力为零。</b>这不是命与运独有的毛病，是所有"什么都能解释"的理论的共同病。<br>
+      所以这一层要给自己上一道闸：<b>一个说法如果不可能被用错，它就不值得被相信。</b>
+    </div></div>
+
+    <div class="field bound"><div class="k">边界</div><div class="v">
+      这道闸门本身也有过火的风险。<b>不是所有事都需要可证伪。</b>已经发生的事，人需要一个说法来安放它——这是心理需要，不是认识论问题。<br>
+      这一条的适用范围是<b>做决策时</b>，不是<b>消化过去时</b>。拿它去要求一个正在难过的人给出"可证伪的说法"，是残忍。
+    </div></div>
+
+    <div class="field act"><div class="k">动作</div><div class="v">
+      <ul>
+        <li>说"这是命"之前，过两道闸：<b>（a）我能指出是哪个具体变量在起作用吗？（b）它变得比我要解释的现象更慢吗？</b>缺一条，这句话就只是事后归因。</li>
+        <li>说"这是运"之前，先写出：<b>如果没有这个外来冲击，趋势本来会是什么？</b>写不出来，就不是运，是没想清楚。</li>
+        <li>记一条规矩：<b>运只能在事前被有意义地谈论。</b>事前说"这个可能来"能让你准备；事后说"这是运"，只是给结果换了个说法。</li>
+      </ul>
+    </div></div>
+  </div>
+</section>
+
 <!-- ============ 资源层 ============ -->
 <section id="sA">
   <div class="sec-h"><span class="cn">Layer A</span><h2>资源层 · 能量与注意力</h2><span class="sec-time">3 min</span></div>
-  <p class="sec-desc">这是你那条"精力有限论"所在的层。你说了能量，这一层还有三件事你没说到：注意力的相对稀缺、环境的认知地位、以及恢复的真实机制。</p>
+  <p class="sec-desc">"精力有限论"在这一层。除了"总量有限"，这里还有三件事需要一起看：注意力的相对稀缺、环境的认知地位、以及恢复的真实机制。</p>
 
   <div class="entry" style="--lc:#f59e0b">
     <div class="e-head"><span class="e-no">A1</span><div class="e-title">注意力比时间更稀缺</div></div>
@@ -582,7 +817,7 @@ footer b{color:var(--text2)}
 <!-- ============ 边界层 ============ -->
 <section id="sB">
   <div class="sec-h"><span class="cn">Layer B</span><h2>边界层 · 你与他人</h2><span class="sec-time">4 min</span></div>
-  <p class="sec-desc">你的"因果"和"赋权"都在这一层。它们有一个共同的底层机制：<b>你与他人的责任如何划界</b>。这一层最容易走偏——用不好就从清醒变成冷漠。</p>
+  <p class="sec-desc">"因果"和"赋权"这两条都在这一层。它们共用一个底层机制：<b>与他人的责任如何划界</b>。这一层最容易走偏——用不好，就从清醒变成冷漠。</p>
 
   <div class="entry" style="--lc:#ec4899">
     <div class="e-head"><span class="e-no">B1</span><div class="e-title">期待的落点决定主动权</div></div>
@@ -657,7 +892,7 @@ footer b{color:var(--text2)}
 <!-- ============ 本体层 ============ -->
 <section id="sC">
   <div class="sec-h"><span class="cn">Layer C</span><h2>本体层 · 情绪与自我</h2><span class="sec-time">4 min</span></div>
-  <p class="sec-desc">你的"情绪可堪破"在这一层。它是内部操作最核心的一层——这里如果乱着，外层的边界和行动都会失真。</p>
+  <p class="sec-desc">"情绪可堪破"在这一层。它是内部操作最核心的一层——这里如果乱着，外层的边界和行动都会失真。</p>
 
   <div class="entry" style="--lc:#8b5cf6">
     <div class="e-head"><span class="e-no">C1</span><div class="e-title">第二支箭</div></div>
@@ -1041,7 +1276,7 @@ footer b{color:var(--text2)}
     </div></div>
     <div class="field act"><div class="k">动作</div><div class="v">
       从这份清单里挑 <b>3 条</b>，各写一个触发条件，贴在你会看到的地方。一个月后再加 3 条。<br>
-      不要试图同时改 27 条——那是又一次用"知道"冒充"做到"。
+      不要试图同时改 41 条——那是又一次用"知道"冒充"做到"。
     </div></div>
   </div>
 
@@ -1078,6 +1313,8 @@ footer b{color:var(--text2)}
       <tr><td>情绪可堪破 ↔ 情绪是信号</td><td>看<b>有无新信息</b>。情绪在传递具体信息（风险、边界、失去）→ 读它；只是重复、没有新内容 → 那是反刍，可以破。</td></tr>
       <tr><td>接纳现状 ↔ 改变现状</td><td>看<b>可改变性</b>。先诚实评估这件事在现有条件下能不能变。能变 → 去变；不能变 → 接纳，然后把能量移到能变的地方。顺序反了会变成两种病：对可改变的认命，对不可改变的较劲。</td></tr>
       <tr><td>自我关怀 ↔ 高标准</td><td>看<b>语言是否指向行动质量</b>。指向"接下来怎么做更好" → 真关怀；只指向"舒服一点、算了" → 是放纵。</td></tr>
+      <tr><td>提高转化率 ↔ 允许自己承受</td><td>看<b>这次冲击有没有击穿你的准备</b>。接得住的运，去建转化能力；已经击穿的（重病、丧亲、系统性崩盘），那就只是承受——这时候说"你要成长"是一句残忍的话。顺序反了会变成两种病：对可准备的运认命，对已击穿的运苛责。</td></tr>
+      <tr><td>换环境 ↔ 深耕积累</td><td>看<b>问题出在环境，还是出在你带在身上的解释框架</b>。环境限制了可能性 → 换分布；问题随你走到哪都重演 → 换环境只是把同一出戏换个舞台。一个判断方法：问自己"上一次换环境之后，多快出现了同样的困境"。</td></tr>
     </tbody>
   </table>
 </section>
@@ -1100,7 +1337,7 @@ footer b{color:var(--text2)}
     <p>文中提及的心理学与行为科学概念（如课题分离、蔡格尼克效应、卡普曼三角、自我损耗的复现争议、幸存者偏差、控制二分法等）均为<b>公共思想资源</b>，其著作权与解释权属于各自的原始提出者与研究者。本文档对这些概念的引用做了<b>面向一般读者的通俗化转述</b>，可能省略了前提条件、学术争议与适用范围，存在简化失真的可能。<b>如需用于学术或专业用途，请查阅原始文献。</b>本文档不对其准确性、完整性或时效性作任何保证。</p>
 
     <h4>四、关于内容生成方式</h4>
-    <p>本文档中标注为「作者原话」的 4 条来自作者本人；其余条目是作者借助 AI 工具，对公共思想资源进行的<b>汇编、改写与结构化整理</b>。整理过程中可能存在理解偏差、归因不准确或表述不当之处。文中观点不代表任何被引用理论的原始作者。</p>
+    <p>本文档中标注为「作者原话」的 <b>5 条</b>来自作者本人。其中「命运层」的模型（命格 / 命理 / 命 / 运 / 命运 之间的关系）由作者提出，该模型的形式化表述、配图，以及这一层其余四条原则，是整理者依据该模型推导的。除上述条目外，其余内容都是作者借助 AI 工具，对公共思想资源进行的<b>汇编、改写与结构化整理</b>。整理过程中可能存在理解偏差、归因不准确或表述不当之处。文中观点不代表任何被引用理论的原始作者。</p>
 
     <h4>五、责任限制</h4>
     <p>在适用法律允许的最大范围内，作者与贡献者<b>不对因使用或依赖本材料而产生的任何直接或间接损失承担责任</b>。你如何理解、采纳或拒绝本文档中的任何内容，以及由此产生的一切后果，由你自行负责。</p>
@@ -1133,6 +1370,7 @@ footer b{color:var(--text2)}
         <li>Andy Clark &amp; David Chalmers —— 延展心智</li>
         <li>Saxbe &amp; Repetti (2010) —— 家居环境与皮质醇节律的相关性研究</li>
         <li>Ray Dalio —— 痛苦 + 反思 = 进步</li>
+        <li>本文档作者 —— 「命运层」的命格 / 命理 / 命 / 运 / 命运 区分（作者原创，非上述任一家学说）</li>
       </ol>
       <p style="margin-top:10px;font-size:12px;color:var(--muted)">
         以上仅为概念来源的方向指引，不代表上述作者或研究者认同本文档的任何观点。<b>本文档未逐一核实一手文献</b>，请以原始出版物为准。
@@ -1141,11 +1379,17 @@ footer b{color:var(--text2)}
   </div>
 </section>
 
+<!-- 作者落款 -->
+<div class="signoff">
+  <p class="sd-quote">诸君，我已释放强运的回响！</p>
+  <p class="sd-by">—— 作者</p>
+</div>
+
 <footer>
   <div class="footgrid">
     <div>
       <b>怎么用这份东西</b><br>
-      1. 先读「作者已说出的四条」——那四条是原点，其余都是延伸，优先级应低于它们。<br>
+      1. 先读「作者已说出的四条」和「命运层」——前者是原点，后者是这套逻辑的世界观底盘，其余都从这两处延伸出去。<br>
       2. 给核心 7 条排一个序。那个顺序就是你的价值观，比任何单条原则都重要。<br>
       3. 挑 3 条写成触发条件：「当 X 发生时，我做 Y」。一个月后再加 3 条。<br>
       4. 半年后回头重读，看哪几条你已经内化到不需要想起，哪几条还在原地——后者才是你真正的功课。<br>
